@@ -1,11 +1,11 @@
-package com.company;
+package classfile;
 
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 
 
-class MagicSquare{
+public class MagicSquare{
     boolean checkRowCol(int[][] array, int initSum){
         int height = array.length;
         for(int j=0; j<height; j++){
