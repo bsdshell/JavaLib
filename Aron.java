@@ -7,7 +7,15 @@ import java.util.*;
 
 public final class Aron {
 
-
+    public static void printSLL(SNode head) {
+        SNode curr = head;
+        while(curr != null){
+            System.out.println("---------------------------------\n"); 
+            System.out.println("[" + curr.data + "]");
+            System.out.println("---------------------------------\n"); 
+            curr = curr.next;
+        }
+    }
     public static boolean findNode(Node root, int n) {
         Node cur = root;
         boolean ret = false;
