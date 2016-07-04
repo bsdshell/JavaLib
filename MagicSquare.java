@@ -88,7 +88,7 @@ public class MagicSquare{
         }
         for(int i=0; i<list.size(); i++){
             List<Integer> newList = new ArrayList<Integer>(list);
-            List<Integer> newPrefix = new ArrayList(prefix);
+            List<Integer> newPrefix = new ArrayList<Integer>(prefix);
             newPrefix.add(newList.get(i));
             newList.remove(i);
             perm2(newPrefix,  newList);

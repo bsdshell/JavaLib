@@ -7,12 +7,45 @@ import java.util.*;
 
 public final class Aron {
 
+    public static void listDir(String directoryName) {
+        File directory = new File(directoryName);
+        File[] fList = directory.listFiles();
+        for (File file : fList) {
+            if (file.isDirectory()) {
+                System.out.println(file.getName());
+            }
+        }
+    }
+
+    public static void beg(){
+        String str = "--------------------------------------------------------------------------";
+        System.out.println("[" + Thread.currentThread().getStackTrace()[2].getMethodName() + "]" + str);
+    }
+    public static void end(){
+        System.out.println("--------------------------------------------------------------------------------");
+    }
+
+    public static void name(){
+        System.out.println("[" + Thread.currentThread().getStackTrace()[2].getMethodName() + "]");
+    }
+
+    public static void listFileDir(String directoryName) {
+        File directory = new File(directoryName);
+
+        File[] fList = directory.listFiles();
+        for (File file : fList) {
+            if (file.isFile()) {
+                System.out.println(file.getAbsolutePath());
+            } else if (file.isDirectory()) {
+                listFileDir(file.getAbsolutePath());
+            }
+        }
+    }
+
     public static void printSLL(SNode head) {
         SNode curr = head;
-        while(curr != null){
-            System.out.println("---------------------------------\n"); 
+        while(curr != null) {
             System.out.println("[" + curr.data + "]");
-            System.out.println("---------------------------------\n"); 
             curr = curr.next;
         }
     }
@@ -21,7 +54,7 @@ public final class Aron {
         boolean ret = false;
         if(cur != null) {
             if(n < cur.data)
-		cur = cur.left;
+                cur = cur.left;
             else if(n > cur.data)
                 cur = cur.right;
             else
@@ -61,9 +94,9 @@ public final class Aron {
     public static void preorder(Node curr) {
         if(curr != null) {
             System.out.print("[" + curr.data + "]");
-    		preorder(curr.left);
-    		preorder(curr.right);
-    	}
+            preorder(curr.left);
+            preorder(curr.right);
+        }
     }
 
     public static void postorder(Node curr) {
@@ -143,17 +176,6 @@ public final class Aron {
         arr[j] = tmp;
     }
 
-    public static void printArray2D(int[][] arr) {
-        if(arr != null) {
-            for(int c=0; c<arr.length; c++) {
-                for(int r=0; r<arr[0].length; r++) {
-                    System.out.print("["+arr[c][r]+"]");
-                }
-                System.out.println();
-            }
-        }
-        System.out.println();
-    }
 
     public static <T> void printList(List<T> list) {
         for(T item : list) {
@@ -179,6 +201,19 @@ public final class Aron {
             System.out.println();
         }
     }
+
+    public static <T> void printArray2D(T[][] arr) {
+//        if(arr != null) {
+//            for(int c=0; c<arr.length; c++) {
+//                for(int r=0; r<arr[0].length; r++) {
+//                    System.out.print("["+arr[c][r]+"]");
+//                }
+//                System.out.println();
+//            }
+//        }
+        System.out.println();
+    }
+
     public static void printTable(int[][] arr) {
         if(arr != null) {
             for(int c=0; c<arr.length; c++) {
@@ -223,7 +258,7 @@ public final class Aron {
     public static void writeFile(String fileName) {
         try {
             // searchkey: write to file, write file, write to text file, open file to write
-            // create file if fileName doesn't exist 
+            // create file if fileName doesn't exist
             FileWriter fstream = new FileWriter(fileName);
             BufferedWriter out = new BufferedWriter(fstream);
             out.write("hello java");

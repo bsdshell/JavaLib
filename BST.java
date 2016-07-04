@@ -10,21 +10,21 @@ public class BST {
         if(root == null) {
             root = new Node(n);
         } else {
-            Node cur = root;
+            Node curr = root;
             boolean end = false;
-            while(cur != null && !end) {
-                if(n < cur.data) {
-                    if(cur.left == null) {
-                        cur.left = new Node(n);
+            while(curr != null && !end) {
+                if(n < curr.data) {
+                    if(curr.left == null) {
+                        curr.left = new Node(n);
                         end = true;
                     } else
-                        cur = cur.left;
+                        curr = curr.left;
                 } else {
-                    if(cur.right == null) {
-                        cur.right = new Node(n);
+                    if(curr.right == null) {
+                        curr.right = new Node(n);
                         end = true;
                     } else
-                        cur = cur.right;
+                        curr = curr.right;
                 }
             }
         }
@@ -34,21 +34,21 @@ public class BST {
             Queue<Node> q = new LinkedList<Node>();
         }
     }
-    public void inorder(Node cur) {
-        if(cur != null) {
-            inorder(cur.left);
-            System.out.print(cur.data + " ");
-            inorder(cur.right);
+    public void inorder(Node curr) {
+        if(curr != null) {
+            inorder(curr.left);
+            System.out.println("[" + curr.data + "]");
+            inorder(curr.right);
         }
     }
     public boolean findNode(int n) {
-        Node cur = root;
+        Node curr = root;
         boolean ret = false;
-        if(cur != null) {
-            if(n < cur.data)
-                cur = cur.left;
-            else if(n > cur.data)
-                cur = cur.right;
+        if(curr != null) {
+            if(n < curr.data)
+                curr = curr.left;
+            else if(n > curr.data)
+                curr = curr.right;
             else
                 ret = true;
         }
@@ -69,10 +69,10 @@ public class BST {
 
 
     public void levelOrder() {
-        Node cur = root;
+        Node curr = root;
         Queue<Node> Q1 = new LinkedList<Node>();
         Queue<Node> Q2 = new LinkedList<Node>();
-        Q1.offer(cur);
+        Q1.offer(curr);
         while(Q1.peek() != null || Q2.peek() != null) {
             while(Q1.peek() != null) {
                 Node top = Q1.poll();

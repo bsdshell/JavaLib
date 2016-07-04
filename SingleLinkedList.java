@@ -5,7 +5,7 @@ import java.lang.String;
 import java.util.*;
 
 public class SingleLinkedList {
-    SNode head;
+    public SNode head;
     public SingleLinkedList() {
         head = null;
     }
