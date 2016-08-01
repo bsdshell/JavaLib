@@ -4,10 +4,36 @@ import java.io.*;
 import java.lang.String;
 import java.util.*;
 
-
 public final class Aron {
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_BLACK = "\u001B[30m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
+    public static final String ANSI_CYAN = "\u001B[36m";
+    public static final String ANSI_WHITE = "\u001B[37m";
 
-    public static void listDir(String directoryName) {
+    final static String lineStr = "\n--------------------------------------------------------------------------";
+    public static void line(){
+        System.out.println(lineStr);
+
+    }
+    public static int charIndex(char ch){
+        Character chara = new Character(ch);
+        if(Character.isLowerCase(ch)){
+            return (int)ch - 'a';
+        }else if(Character.isUpperCase(ch)){
+            return (int)ch - 'A';
+        }
+        return -1;
+    }
+    public static int charToInt(char ch){
+        return (int)ch;
+    }
+
+    public static void listDirPrint(String directoryName) {
         File directory = new File(directoryName);
         File[] fList = directory.listFiles();
         for (File file : fList) {
@@ -17,19 +43,18 @@ public final class Aron {
         }
     }
 
-    public static void beg(){
-        String str = "--------------------------------------------------------------------------";
-        System.out.println("[" + Thread.currentThread().getStackTrace()[2].getMethodName() + "]" + str);
+    public static void beg() {
+        System.out.println(ANSI_RED + "[" + Thread.currentThread().getStackTrace()[2].getMethodName() + "]" + ANSI_RESET + lineStr);
     }
-    public static void end(){
-        System.out.println("--------------------------------------------------------------------------------");
+    public static void end() {
+        System.out.println(lineStr);
     }
 
-    public static void name(){
+    public static void name() {
         System.out.println("[" + Thread.currentThread().getStackTrace()[2].getMethodName() + "]");
     }
 
-    public static void listFileDir(String directoryName) {
+    public static void listFileDirPrint(String directoryName) {
         File directory = new File(directoryName);
 
         File[] fList = directory.listFiles();
@@ -37,8 +62,39 @@ public final class Aron {
             if (file.isFile()) {
                 System.out.println(file.getAbsolutePath());
             } else if (file.isDirectory()) {
-                listFileDir(file.getAbsolutePath());
+                listFileDirPrint(file.getAbsolutePath());
             }
+        }
+    }
+
+    public static boolean isBST(Node root, Node previous) {
+        if( root != null) {
+            if(!isBST(root.left, previous))
+                return false;
+            if(previous != null && previous.data >= root.data)
+                return false;
+            if(!isBST(root.right, root))
+                return false;
+        }
+        return true;
+    }
+
+    public static void swap(int m, int n, Node root, Node[] first, Node[] second) {
+        if(root != null) {
+            swap(m, n, root.left, first, second);
+            if(root.data == m) {
+                first[0] = root;
+            } else if(root.data == n) {
+                second[0] = root;
+            }
+            if( first[0] != null && second[0] != null) {
+                int tmp = first[0].data;
+                first[0].data = second[0].data;
+                second[0].data = tmp;
+                first[0] = null;
+                second[0] = null;
+            }
+            swap(m, n, root.right, first, second);
         }
     }
 
@@ -114,6 +170,13 @@ public final class Aron {
             inorder(curr.right);
         }
     }
+    public static void inorderl(Node curr) {
+        if(curr != null) {
+            inorder(curr.left);
+            System.out.println("[" + curr.data + "]");
+            inorder(curr.right);
+        }
+    }
 
     public static boolean squareNumber(int n) {
         int num = (int)Math.sqrt(n);
@@ -176,10 +239,16 @@ public final class Aron {
         arr[j] = tmp;
     }
 
+    public static <T> void printlnList(List<T> list) {
+        for(T item : list) {
+            System.out.println("[" + item + "]");
+        }
+        System.out.println();
+    }
 
     public static <T> void printList(List<T> list) {
         for(T item : list) {
-            System.out.println(item);
+            System.out.print("[" + item + "]");
         }
         System.out.println();
     }
@@ -238,15 +307,34 @@ public final class Aron {
         }
     }
 
+    public static List<String> readFileOneLine(String fname){
+        List<String> list = new ArrayList<String>(); 
+        if(fname != null){
+            try(BufferedReader br = new BufferedReader(new FileReader(fname))){
+                String line; 
+                while((line = br.readLine()) != null){
+                    break;
+                }
+                String[] arr = line.trim().split("\\s+");
+                for(int i=0; i<arr.length; i++){
+                    if(arr[i].length() > 0)
+                        list.add(arr[i]); 
+                } 
+                Aron.printList(list);
+            }catch(IOException e){
+                System.out.println(e.getMessage());
+            }
+        }
+        return list;
+    }
+
     public static List<String> readFile(String fileName) {
         List<String> list = new ArrayList<String>();
         try {
-            // searchkey: read file line by line
             BufferedReader in = new BufferedReader(new FileReader(fileName));
             String str;
             while((str = in.readLine()) != null) {
-                System.out.println(str);
-                list.add(str);
+                list.add(str.trim());
             }
             in.close();
         } catch(IOException io) {
@@ -265,5 +353,36 @@ public final class Aron {
             out.close();
         } catch(Exception e) {
         }
+    }
+
+    public static List<String> listDir(String directoryName){
+        List<String> list = new ArrayList<String>(); 
+        File directory = new File(directoryName);
+
+        File[] fList = directory.listFiles();
+        for (File file : fList){
+            if (file.isDirectory()){
+                System.out.println(file.getName());
+                list.add(file.getName());
+            }
+        }
+        return list;
+    }
+
+    public static List<String> listFileDir(String directoryName){
+        List<String> list = new ArrayList<String>(); 
+        File directory = new File(directoryName);
+
+        File[] fList = directory.listFiles();
+        for (File file : fList){
+            if (file.isFile()){
+                System.out.println(file.getAbsolutePath());
+                list.add(file.getAbsolutePath());
+            } else if (file.isDirectory()){
+                listFileDir(file.getAbsolutePath());
+                list.add(file.getAbsolutePath());
+            }
+        }
+        return list;
     }
 }

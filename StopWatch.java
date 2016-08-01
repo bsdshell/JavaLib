@@ -1,6 +1,6 @@
 package classfile;
 
-class StopWatch {
+public class StopWatch {
   private long startTime = 0;
   private long stopTime = 0;
   private boolean running = false;
@@ -27,6 +27,17 @@ class StopWatch {
     return elapsed;
   }
 
+  public long printTime() {
+    long elapsed;
+    if (running) {
+      elapsed = (System.currentTimeMillis() - startTime);
+    }
+    else {
+      elapsed = (stopTime - startTime);
+    }
+    System.out.println("milliseconds=[" + elapsed + "]"); 
+    return elapsed;
+  }
 
   //elaspsed time in seconds
   public long getElapsedTimeSecs() {
@@ -37,6 +48,9 @@ class StopWatch {
     else {
       elapsed = ((stopTime - startTime) / 1000);
     }
+
+    System.out.println("second=[" + elapsed + "]"); 
+
     return elapsed;
   }
 }

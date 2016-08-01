@@ -3,6 +3,7 @@ package classfile;
 public class Node {
     public Node left;
     public Node right;
+    public Node next;
     public int data;
     public boolean isVisited;
     public Node(int n) {

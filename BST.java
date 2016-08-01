@@ -6,6 +6,11 @@ public class BST {
     public BST() {
         root = null;
     };
+
+    public void pp(){
+        System.out.println("[pp]");
+    }
+
     public void insert(int n) {
         if(root == null) {
             root = new Node(n);
@@ -41,17 +46,32 @@ public class BST {
             inorder(curr.right);
         }
     }
+
     public boolean findNode(int n) {
         Node curr = root;
         boolean ret = false;
-        if(curr != null) {
-            if(n < curr.data)
-                curr = curr.left;
-            else if(n > curr.data)
-                curr = curr.right;
-            else
-                ret = true;
-        }
+            while(curr != null) {
+                if(n < curr.data)
+                    curr = curr.left;
+                else if(n > curr.data)
+                    curr = curr.right;
+                else
+                    return true;
+            }
+        return ret;
+    }
+
+    public boolean contains(int n) {
+        Node curr = root;
+        boolean ret = false;
+            while(curr != null) {
+                if(n < curr.data)
+                    curr = curr.left;
+                else if(n > curr.data)
+                    curr = curr.right;
+                else
+                    return true;
+            }
         return ret;
     }
     public boolean findSum(Node r, int n) {
