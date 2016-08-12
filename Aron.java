@@ -264,6 +264,7 @@ public final class Aron {
             inorder(curr.right);
         }
     }
+
     public static void inorderl(Node curr) {
         if(curr != null) {
             inorder(curr.left);
@@ -643,5 +644,142 @@ public final class Aron {
             quickSort(arr, lo, pivotIndex-1);
             quickSort(arr, pivotIndex+1, hi);
         }
+    }
+
+    public static String executeCommand(String[] command) {
+        StringBuffer output = new StringBuffer();
+        Process p;
+        try {
+            p = Runtime.getRuntime().exec(command);
+            p.waitFor();
+            BufferedReader reader =
+                new BufferedReader(new InputStreamReader(p.getInputStream()));
+
+            String line = "";
+            while ((line = reader.readLine())!= null) {
+                output.append(line + "\n");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return output.toString();
+    }
+
+    public static String executeCommand(String command) {
+        StringBuffer output = new StringBuffer();
+        Process p;
+        try {
+            p = Runtime.getRuntime().exec(command);
+            p.waitFor();
+            BufferedReader reader =
+                new BufferedReader(new InputStreamReader(p.getInputStream()));
+
+            String line = "";
+            while ((line = reader.readLine())!= null) {
+                output.append(line + "\n");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return output.toString();
+    }
+
+    // pretty print binary tree
+    // int indent = 0
+    public static void prettyPrint(Node r, int indent) {
+        if( r != null) {
+            System.out.print("["+r.data+"]");
+            if(r.right != null)
+                System.out.print("[  ]");
+
+            prettyPrint(r.right, indent+1);
+
+            if(r.left != null) {
+                System.out.println();
+                for(int i=0; i<indent; i++) {
+                    System.out.print("[  ][  ]");
+                }
+            }
+            prettyPrint(r.left, indent+1);
+        }
+    }
+
+    public static void binImage(Node r) {
+        List<String> list = new ArrayList<String>();
+        String str1 = "digraph G{\n";
+        list.add(str1);
+        System.out.print(str1);
+        int level = 0;
+        printGraphviz(r, level, list, 0);
+        String str2 = "}\n";
+        System.out.print(str2);
+        list.add(str2);
+
+        String fName = "/Users/cat/myfile/github/java/bintree.gv";
+        Aron.writeFile(fName, list);
+
+        //TODO try to run the command in background, "command &" doesn't work 
+        String command = "/Applications/Graphviz.app/Contents/MacOS/Graphviz bintree.gv";
+        Aron.executeCommand(command);
+    }
+
+    public static void printGraphviz(Node root, int level, List<String> list, int leftRight) {
+        if(root != null) {
+            String str1 = "";
+            if(leftRight == 0){
+                // 0 = left node
+                str1 = "" + root.data + "[color=red];" + "\n";
+            }else{
+                // 1 = right node
+                str1 = "" + root.data + "[color=green];" + "\n";
+            }
+            System.out.print(str1);
+            list.add(str1);
+            if(root.left != null) {
+                String str2 = "" + root.data + "->";
+                System.out.print(str2);
+                list.add(str2);
+            }
+            printGraphviz(root.left, level+1, list, 0);
+
+            if(root.right != null) {
+                String str3 = "" + root.data + "->";
+                System.out.print(str3);
+                list.add(str3);
+            }
+            printGraphviz(root.right, level+1, list, 1);
+        }
+    }
+
+    //init index = 0
+    public static void printAllPath(Node r, int[] arr, int index) {
+        if( r != null && arr != null) {
+            arr[index] = r.data;
+            if( r.left == null && r.right == null) {
+                for(int i=0; i<index+1; i++)
+                    System.out.print(arr[i]+" ");
+                System.out.println();
+            } else {
+                printAllPath(r.left, arr, index+1);
+                printAllPath(r.right, arr, index+1);
+            }
+        }
+    }
+
+    public static boolean equalBinaryTree(Node r1, Node r2) {
+        if(r1==null && r2==null)
+            return true;
+        else if(r1 != null && r2 != null) {
+            if(r1.data != r2.data)
+                return false;
+            if(!equalBinaryTree(r1.left, r2.left))
+                return false;
+            if(!equalBinaryTree(r1.right, r2.right))
+                return false;
+        } else
+            return false;
+        return true;
     }
 }
