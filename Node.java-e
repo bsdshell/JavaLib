@@ -31,7 +31,31 @@ public class Node{
         if(this.data != node.data)
             return false;
 
+//        if(this.left != node.left)
+//            return false;
+//
+//        if(this.right != node.right)
+//            return false;
+//        
+//        if(this.next != node.next)
+//            return false;
+//
+//        if(this.isVisited != node.isVisited)
+//            return false;
+
         return true;
     }
+//    public Node getLeft() {
+//        return left;
+//    }
+//    public Node getRight() {
+//        return right;
+//    }
+//    public void setLeft(Node l) {
+//        left = l;
+//    }
+//    public void setRight(Node r) {
+//        right = r;
+//    }
 }
 

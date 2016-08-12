@@ -5,25 +5,25 @@ import java.lang.String;
 import java.util.*;
 
 public class SingleLinkedList {
-    public Node head;
+    public SNode head;
     public SingleLinkedList() {
         head = null;
     }
 
     public void append(int n) {
-        Node curr = head;
+        SNode curr = head;
         if(head == null)
-            head = new Node(n);
+            head = new SNode(n);
         else {
             while(curr.next != null) {
                 curr = curr.next;
             }
-            curr.next = new Node(n);
+            curr.next = new SNode(n);
         }
     }
 
-    public void append(Node no) {
-        Node curr = head;
+    public void append(SNode no) {
+        SNode curr = head;
         if(head == null)
             head = no;
         else {
@@ -35,8 +35,8 @@ public class SingleLinkedList {
     }
     // prev =  null
     // [
-    static Node reverseLL(Node curr){
-        Node head = curr;
+    static SNode reverseLL(SNode curr){
+        SNode head = curr;
         if(curr != null){
             head = reverseLL(curr.next);
             if(curr.next != null){
@@ -51,8 +51,8 @@ public class SingleLinkedList {
     }
 
     //recursive
-    static Node next=null;
-    public void Reverse(Node curr) {
+    static SNode next=null;
+    public void Reverse(SNode curr) {
         if(curr != null) {
             Reverse(curr.next);
             if(next != null)
@@ -64,10 +64,10 @@ public class SingleLinkedList {
         }
     }
     //iteration
-    public void reverseIte(Node curr) {
+    public void reverseIte(SNode curr) {
         if(head != null) {
-            Node prev = null;
-            Node next = curr.next;
+            SNode prev = null;
+            SNode next = curr.next;
 
             while(curr != null) {
                 curr.next = prev;
@@ -80,22 +80,22 @@ public class SingleLinkedList {
         }
     }
 
-    public Node getHead() {
+    public SNode getHead() {
         return head;
     }
 
-    public Node getTail() {
-        Node curr = head;
+    public SNode getTail() {
+        SNode curr = head;
         while(curr != null && curr.next != null) {
             curr = curr.next;
         }
         return curr;
     }
 
-    public void Remove(Node no) {
+    public void Remove(SNode no) {
         if(no != null && head != null) {
-            Node curr = head;
-            Node prev = null;
+            SNode curr = head;
+            SNode prev = null;
             while(curr != no) {
                 prev = curr;
                 curr = curr.next;

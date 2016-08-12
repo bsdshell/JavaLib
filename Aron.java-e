@@ -115,8 +115,8 @@ public final class Aron {
         }
     }
 
-    public static void printSLL(Node head) {
-        Node curr = head;
+    public static void printSLL(SNode head) {
+        SNode curr = head;
         while(curr != null) {
             System.out.println("[" + curr.data + "]");
             curr = curr.next;
