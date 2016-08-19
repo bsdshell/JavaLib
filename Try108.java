@@ -2,6 +2,7 @@ import java.util.*;
 import java.io.*;
 import classfile.*;
 
+
 public class Try108{
     public static void main(String[] args) {
         test0();

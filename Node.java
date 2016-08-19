@@ -4,12 +4,12 @@ public class Node{
     public Node left;
     public Node right;
     public Node next;
-    public int data;
+    public Integer data;
     public boolean isVisited;
-    public Node(int n) {
-        left = right = null;
-        data = n;
-        isVisited = false;
+    public Node(int data) {
+        this.left = this.right = null;
+        this.data = this.data;
+        this.isVisited = false;
     }
 
     @Override
