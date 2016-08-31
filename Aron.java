@@ -4,7 +4,10 @@ import java.io.*;
 import java.lang.String;
 import java.util.*;
 import java.net.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import classfile.*;
+
 
 public final class Aron {
     final static String lineStr = "\n--------------------------------------------------------------------------";
@@ -20,6 +23,17 @@ public final class Aron {
             return (int)ch - 'A';
         }
         return -1;
+    }
+
+    public static String intToAlphabetUpper(int n) {
+            int num = (int)'A' + n;
+            char ch = (char)num;
+            return "" + ch;
+    }
+    public static String intToAlphabet(int n) {
+            int num = (int)'a' + n;
+            char ch = (char)num;
+            return "" + ch;
     }
 
 
@@ -366,6 +380,25 @@ public final class Aron {
         System.out.println();
     }
 
+    public static <T> void printList2dArr(List<ArrayList<T>> lists) {
+        for(ArrayList<T> list : lists) {
+            for(T item : list) {
+                System.out.println("[" + item + "]");
+                Ut.l();
+            }
+            Ut.l();
+        }
+        Ut.l();
+    }
+
+    public static <T> void printList2d(List<List<T>> lists) {
+        for(List<T> list : lists) {
+            for(T item : list) {
+                System.out.println("[" + item + "]");
+            }
+        }
+        Ut.l();
+    }
     public static <T> void printList(List<T> list) {
         for(T item : list) {
             System.out.print("[" + item + "]");
@@ -572,6 +605,26 @@ public final class Aron {
         return list;
     }
 
+    /**
+    * @param directoryName absoluate path to a directory
+    *
+    * @return a list of absoluate file paths 
+    */
+    public static List<String> listFile(String directoryName) {
+        List<String> list = new ArrayList<String>();
+        File directory = new File(directoryName);
+
+        File[] fList = directory.listFiles();
+        for (File file : fList) {
+            if (file.isFile()) {
+                System.out.println(file.getAbsolutePath());
+                list.add(file.getAbsolutePath());
+            } else if (file.isDirectory()) {
+                listFile(file.getAbsolutePath());
+            }
+        }
+        return list;
+    }
     public static List<String> listFileDir(String directoryName) {
         List<String> list = new ArrayList<String>();
         File directory = new File(directoryName);
@@ -781,5 +834,57 @@ public final class Aron {
         } else
             return false;
         return true;
+    }
+
+    public static String extractEmail(String strPhone){
+        String retNumber = "";
+        String format0 = "([\\w\\.-]+@\\S+\\.\\w{2,3})";
+        String[] patternArray = {
+            format0
+        };
+        for(String numberPat: patternArray){
+            Pattern patternRegex = Pattern.compile(numberPat);
+            Matcher phoneMatch = patternRegex.matcher(strPhone);
+            if(phoneMatch.find()){
+                retNumber = phoneMatch.group(1);
+                Print.plb(numberPat);
+                Print.plb(retNumber);
+                break;
+            }
+        }
+        return retNumber;
+    }
+
+    // format0 = 4253443445
+    // format1 = 425-344-3445
+    // format2 = 425-3443445
+    // format3 = 425-344 3445
+    // format4 = 425 344-3445
+    public static String extractPhoneNumber(String strPhone){
+        String retNumber = "";
+        String format0 = "((\\d\\s*){10})";
+        String format1 = "(\\d{3}-\\d{3}-\\d{4})";
+        String format2 = "(\\d{3}-\\d{7})";
+        String format3 = "(\\d{3}-\\d{3}\\s*\\d{4})";
+        String format4 = "(\\d{3}\\s*\\d{3}-\\d{4})";
+        
+        String[] patternArray = {
+            format0,
+            format1,
+            format2,
+            format3,
+            format4
+        };
+        for(String numberPat: patternArray){
+            Pattern patternRegex = Pattern.compile(numberPat);
+            Matcher phoneMatch = patternRegex.matcher(strPhone);
+            if(phoneMatch.find()){
+                retNumber = phoneMatch.group(1);
+                Print.plb(numberPat);
+                Print.plb(retNumber);
+                break;
+            }
+        }
+        return retNumber;
     }
 }

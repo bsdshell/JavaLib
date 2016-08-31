@@ -8,7 +8,7 @@ public class Node{
     public boolean isVisited;
     public Node(int data) {
         this.left = this.right = null;
-        this.data = this.data;
+        this.data = data;
         this.isVisited = false;
     }
 

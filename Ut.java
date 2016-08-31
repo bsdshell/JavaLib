@@ -12,4 +12,7 @@ public final class Ut{
     public static boolean nonull(Object obj){
         return obj != null;
     }
+    public static void printPoint(Point p){
+        Print.plb(p.x + ", " + p.y);
+    }
 } 
