@@ -7,3 +7,8 @@
 - Only jar file in directory [/Users/cat/myfile/github/JavaLib/commons-lang3-3.5.jar]
 
 - [Example](https://github.com/bsdshell/java/blob/master/PaddingExample.java)
+
+- import package
+```java
+    import org.apache.commons.lang3.StringUtils;
+```
