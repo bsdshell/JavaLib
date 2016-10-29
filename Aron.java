@@ -74,6 +74,12 @@ public final class Aron {
         System.out.println("[" + Thread.currentThread().getStackTrace()[2].getMethodName() + "]");
     }
 
+    /**
+    *
+    * @param directoryName full directory name 
+    *
+    * @return void
+    */
     public static void listFileDirPrint(String directoryName) {
         File directory = new File(directoryName);
 
@@ -85,6 +91,100 @@ public final class Aron {
                 listFileDirPrint(file.getAbsolutePath());
             }
         }
+    }
+
+    // 1->'A'
+    // 2->'B'
+    // 3->'C'
+    //
+    // 26->'z'
+    // 27->'AA'  1*pow(26, 1) + 1*pow(26, 0) = 27
+    // 52->'AZ'  1*pow(26, 1) + 26*pow(26, 0) = 52
+    //
+    // 'A'->1 - 1 = 0
+    // 'B'->2 - 1 = 1
+    // 'C'->3 - 1 = 2
+    // 'Z'->26 - 1 = 25
+    // ['A'..'Z'] -> [0..25]
+    public static int excelHeaderToNumber(String str) {
+        if(str != null) {
+            int sum = 0;
+            int len = str.length();
+            for(int i=len-1; i>=0; i--) {
+                char ch = str.charAt(i);
+                int c  = ch - 'A' + 1;
+                sum += c*(int)Math.pow(26, len - 1 - i);
+            }
+            return sum;
+        } else {
+            throw new IllegalArgumentException("str must be not null.");
+        }
+    }
+
+    // n = 1..
+    // c = ch - 'A' + 1 => c - 1 = ch - 'A'
+    // x = c - 1 = ch - 'A' => r[0..25] maps ['A'..'Z']
+    public static String numberToExcelHeader(int n) {
+        final int base = 26;
+        String str = "";
+        while(n - 1 >= 0) {
+            int r = (n - 1) % base;
+            str = (char)(r + 'A') + "" + str;
+            n  = (n - 1) / base;
+        }
+        return str;
+    }
+
+    // 6:42
+    // "123" -> 123
+    // String to decimal
+    public static int atoInt(String str){
+        if(str != null){
+            int len = str.length(); 
+            int sum = 0;
+            for(int i=len-1; i>=0; i--){
+                char ch = str.charAt(i);
+                if(Character.isDigit(ch)){
+                    int c = (int)(ch - '0');
+                    sum += c*Math.pow(10, len - 1 - i);
+                }else{
+                    throw new IllegalArgumentException("str contains non-digit");
+                }
+            }
+            return sum;
+        }
+        throw new IllegalArgumentException("str must not be null");
+    }
+
+    // 3->"101"
+    // convert decimal to String Binary
+    public static String decimalToBinary(int n){
+        String str ="";
+        if(n == 0){
+            str = "0";
+        }else{
+            while(n > 0){
+                int r = n % 2;
+                str = r + "" + str;
+                n /= 2;
+            }
+        }
+        return str;
+    }
+    public static <T> List<T> left(List<T> list, int index) {
+        List<T> leftList = new ArrayList<T>(); 
+        for(int i=0; i<list.size(); i++)
+            leftList.add(list.get(i));
+
+        return leftList;
+    }
+
+    public static <T> List<T> right(List<T> list, int index) {
+        List<T> rightList = new ArrayList<T>(); 
+        for(int i=index; i<list.size(); i++)
+            rightList.add(list.get(i));
+
+        return rightList;
     }
 
     public static boolean isBST(Node root, Node previous) {
@@ -100,11 +200,11 @@ public final class Aron {
     }
 
     public static char intToChar(int num){
-        return Character.forDigit(num, 10);
+        return (char)num; 
     }
 
     public static int charToInt(char ch){
-        return Character.digit(ch, 10);
+        return (int)ch; 
     }
     public static String charToString(char ch){
         return Character.toString(ch);
@@ -128,6 +228,31 @@ public final class Aron {
             swap(m, n, root.right, first, second);
         }
     }
+
+    public static Node getNode(Node r, int m){
+        if(r != null){
+            if(r.data == m)
+                return r;
+            Node left = getNode(r.left, m);
+            if(left != null)
+                return left;
+
+            Node right = getNode(r.right, m);
+            if(right != null)
+                return right;
+        }
+        return null;
+    }
+    public static void swapNode(Node r, int m, int n){
+        Node left = getNode(r, m);
+        Node right = getNode(r, n);
+        if(left != null && right != null){
+            int tmp = left.data;
+            left.data = right.data;
+            right.data = tmp;
+        }
+    }
+
 
     public static void printSLL(Node head) {
         Node curr = head;
@@ -162,7 +287,7 @@ public final class Aron {
             list.add(q);
             while((Q1.peek() != null || Q2.peek() != null) && countLevel < level) {
                 if(countLevel < level){
-                    Print.plb("q1.s=" + Q1.size());
+                    Print.pbl("q1.s=" + Q1.size());
                     list.add(Q1);
                     countLevel++;
                 }
@@ -192,7 +317,7 @@ public final class Aron {
                 }
 
                 if(countLevel < level){
-                    Print.plb("q2.s=" + Q2.size());
+                    Print.pbl("q2.s=" + Q2.size());
                     list.add(Q2);
                     countLevel++;
                 }
@@ -263,11 +388,29 @@ public final class Aron {
         }
     }
 
+    public static void preorderGraph(Node curr){
+        if(curr != null){
+            Print.p(curr.data);
+            for(Node n : curr.list){
+                preorderGraph(n);
+            }
+        }
+    }
+
     public static void postorder(Node curr) {
         if(curr != null) {
             postorder(curr.left);
             postorder(curr.right);
             System.out.print("[" + curr.data + "]");
+        }
+    }
+
+    public static void postorderGraph(Node curr){
+        if(curr != null){
+            for(Node n : curr.list){
+                postorderGraph(n);
+            }
+            Print.p(curr.data);
         }
     }
 
@@ -380,6 +523,18 @@ public final class Aron {
         System.out.println();
     }
 
+    public static <T1, T2> void printMap(Map<T1, T2> map) {
+        for(Map.Entry<T1, T2> entry : map.entrySet()){
+            System.out.println("[" + entry.getKey() + " , " + entry.getValue() + "]");
+        } 
+        
+    }
+    public static <T> void printSet(Set<T> set) {
+        Iterator ite = set.iterator();
+        while(ite.hasNext()){
+            Print.p(ite.next());
+        }
+    }
     public static <T> void printList2dArr(List<ArrayList<T>> lists) {
         for(ArrayList<T> list : lists) {
             for(T item : list) {
@@ -394,16 +549,40 @@ public final class Aron {
     public static <T> void printList2d(List<List<T>> lists) {
         for(List<T> list : lists) {
             for(T item : list) {
+                System.out.print("[" + item + "]");
+            }
+        }
+        Ut.l();
+    }
+
+    public static <T> void printList2dln(List<List<T>> lists) {
+        for(List<T> list : lists) {
+            for(T item : list) {
                 System.out.println("[" + item + "]");
             }
         }
         Ut.l();
     }
+
     public static <T> void printList(List<T> list) {
         for(T item : list) {
             System.out.print("[" + item + "]");
         }
         System.out.println();
+    }
+
+    public static <T> void printList(List<T> list, String line) {
+        for(T item : list) {
+            if(line.length() > 0)
+                System.out.print("[" + item + "]");
+            else
+                System.out.println("[" + item + "]");
+        }
+        System.out.println();
+    }
+
+    public static <T> void pL(List<T> list) {
+        printList(list);
     }
 
     public static <T> void fromArrayToCollection(T[] a, Collection<T> c) {
@@ -436,6 +615,14 @@ public final class Aron {
         return isInc;
     }
 
+    public static void printArray(char[] arr) {
+        if(arr != null) {
+            for(char t : arr) {
+                System.out.print("["+ t +"]");
+            }
+            System.out.println();
+        }
+    }
     public static void printArray(int[] arr) {
         if(arr != null) {
             for(int t : arr) {
@@ -494,7 +681,18 @@ public final class Aron {
         }
         System.out.println();
     }
-
+    public static void printArray2D(char[][] arr) {
+        if(arr != null) {
+            for(int c=0; c<arr.length; c++) {
+                for(int r=0; r<arr[0].length; r++) {
+                    String s = arr[c][r] + "";
+                    System.out.print("["+ s +"]");
+                }
+                System.out.println();
+            }
+        }
+        System.out.println();
+    }
     public static <T> void printArray2D(T[][] arr) {
         if(arr != null) {
             for(int c=0; c<arr.length; c++) {
@@ -553,7 +751,7 @@ public final class Aron {
         return list;
     }
 
-    // read file line by line
+    // read file line by line to list
     public static List<String> readFile(String fileName) {
         List<String> list = new ArrayList<String>();
         try {
@@ -580,6 +778,19 @@ public final class Aron {
         }
     }
 
+    // if match pattern, true 
+    // o.w false 
+    //
+    // e.g. pattern="\\.html$" input="file.html" => return true 
+    //
+    public static boolean isMatched(String regexp, String input) {
+        String ret = null;
+        Pattern pattern = Pattern.compile(regexp);
+        Matcher match = pattern.matcher(input);
+
+        return match.find();
+    }
+
     public static void writeFile(String fileName, List<String> list) {
         try {
             FileWriter fstream = new FileWriter(fileName);
@@ -591,6 +802,8 @@ public final class Aron {
         } catch(Exception e) {
         }
     }
+
+    // list all directories only in directoryName
     public static List<String> listDir(String directoryName) {
         List<String> list = new ArrayList<String>();
         File directory = new File(directoryName);
@@ -847,8 +1060,8 @@ public final class Aron {
             Matcher phoneMatch = patternRegex.matcher(strPhone);
             if(phoneMatch.find()){
                 retNumber = phoneMatch.group(1);
-                Print.plb(numberPat);
-                Print.plb(retNumber);
+                Print.pbl(numberPat);
+                Print.pbl(retNumber);
                 break;
             }
         }
@@ -880,11 +1093,98 @@ public final class Aron {
             Matcher phoneMatch = patternRegex.matcher(strPhone);
             if(phoneMatch.find()){
                 retNumber = phoneMatch.group(1);
-                Print.plb(numberPat);
-                Print.plb(retNumber);
+                Print.pbl(numberPat);
+                Print.pbl(retNumber);
                 break;
             }
         }
         return retNumber;
     }
+
+    // print all permutation from given char[] array 
+    // index = 0
+    //
+    public static void permutation(char[] arr, int index){
+        if(index == arr.length){
+            Aron.printArray(arr);
+        }else{
+            if(arr != null){
+                int len = arr.length;
+                for(int i=index; i<len; i++){
+                    Aron.swap(arr, i, index);
+                    permutation(arr, index + 1);
+                    Aron.swap(arr, i, index);
+                } 
+            }
+        }
+    }
+
+    // rotate 2d array clockwise 90 degrees
+    public static void rotateArray(int[][] arr){
+        if(arr != null){
+            int len = arr.length;
+            for(int k = 0; k<len/2; k++){
+                for(int j=k; j<len-1-k; j++){
+                    int tmp = arr[k][j];
+                    arr[k][j] = arr[len-1-j][k];
+                    arr[len-1-j][k] = arr[len-1-k][len-1-j];
+                    arr[len-1-k][len-1-j] = arr[j][len-1-k];
+                    arr[j][len-1-k] = tmp;
+                }
+            }
+        }
+    }
+
+    //[ file=spiralnew.html title=""
+    // [1, 2]
+    //
+    // [1]
+    // 
+    // [1, 2]
+    // [3, 4]
+    // 
+    // [1, 2, 3]
+    // [4, 5, 6]
+    // print spiral shape from rectangle 
+    //
+    public static void rotateRectangle(int[][] arr){
+        if(arr != null){
+            int height = arr.length;
+            if(height > 0){
+                int width = arr[0].length;
+                int k = 0; 
+                while(k < Math.min(height, width)){
+                    if(width - 2*k == 1){
+                        for(int i=k; i<height-k; i++){
+                            Print.p(arr[i][k]);
+                        } 
+                        break;
+                    }else if(height- 2*k == 1){
+                        for(int i=k; i<width-k; i++){
+                            Print.p(arr[k][i]);
+                        }
+                        break;
+                    }
+                    else if((width - 2*k == 0) || (height - 2*k == 0)){
+                        break;
+                    }else{
+                        for(int i=k; i<width-1-k; i++){
+                            Print.p(arr[k][i]);
+                        } 
+                        for(int i=k; i<height-1-k; i++){
+                            Print.p(arr[i][width-1-k]);
+                        }
+                        for(int i=k; i<width-1-k; i++){
+                            Print.p(arr[height-1-k][width-1-i]);
+                        }
+                        for(int i=k; i<height-1-k; i++){
+                            Print.p(arr[height-1-i][k]);
+                        }
+                    }
+                    k++;
+                }
+            }
+        }
+    }
+    //]
 }

@@ -121,31 +121,31 @@ public final class Print{
     }
 
 
-    public static void plb(boolean a) {
+    public static void pbl(boolean a) {
         System.out.println("[" + a + "]");
     }
-    public static void plb(char a) {
+    public static void pbl(char a) {
         System.out.println("[" + a + "]");
     }
-    public static void plb(char[] a) {
+    public static void pbl(char[] a) {
         System.out.println("[" + a + "]");
     }
-    public static void plb(double a) {
+    public static void pbl(double a) {
         System.out.println("[" + a + "]");
     }
-    public static void plb(float a) {
+    public static void pbl(float a) {
         System.out.println("[" + a + "]");
     }
-    public static void plb(int a) {
+    public static void pbl(int a) {
         System.out.println("[" + a + "]");
     }
-    public static void plb(long a) {
+    public static void pbl(long a) {
         System.out.println("[" + a + "]");
     }
-    public static void plb(Object a) {
+    public static void pbl(Object a) {
         System.out.println("[" + a + "]");
     }
-    public static void plb(String a) {
+    public static void pbl(String a) {
         System.out.println("[" + a + "]");
     }
 }

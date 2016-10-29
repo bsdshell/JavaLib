@@ -9,10 +9,11 @@ public final class Ut{
     public static void l() {
         System.out.println(lineStr);
     }
+    
     public static boolean nonull(Object obj){
         return obj != null;
     }
     public static void printPoint(Point p){
-        Print.plb(p.x + ", " + p.y);
+        Print.pbl(p.x + ", " + p.y);
     }
 } 
