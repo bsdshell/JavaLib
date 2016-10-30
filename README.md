@@ -4,7 +4,7 @@
 #### Use leftpad from the Lib 
 - [URL](http://www-eu.apache.org/dist//commons/lang/source/commons-lang3-3.5-src.zip)
 
-- Only jar file in directory [/Users/cat/myfile/github/JavaLib/commons-lang3-3.5.jar]
+- Only jar file [ /Users/cat/myfile/github/JavaLib/commons-lang3-3.5.jar ]
 
 - [Example](https://github.com/bsdshell/java/blob/master/PaddingExample.java)
 

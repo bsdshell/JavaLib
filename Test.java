@@ -42,7 +42,7 @@ public final class Test extends TestBase{
         }else{
             equal = false;
         }
-        Print.plb(equal);
+        Print.pbl(equal);
     }
     public static void t(Integer n1, Integer n2) {
         if(n1 == null && n2 == null){

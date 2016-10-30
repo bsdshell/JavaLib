@@ -3,6 +3,7 @@ import java.util.*;
 
 public class BST {
     public Node root;
+    public List<Node> list = new ArrayList<Node>();
     public BST() {
         root = null;
     };
@@ -10,10 +11,16 @@ public class BST {
     public void pp(){
         System.out.println("[pp]");
     }
+    public void print(){
+        for(Node n : list){
+            Print.pb(n.data);
+        }
+    }
 
     public void insert(int n) {
         if(root == null) {
             root = new Node(n);
+            list.add(root);
         } else {
             Node curr = root;
             boolean end = false;
@@ -21,12 +28,14 @@ public class BST {
                 if(n < curr.data) {
                     if(curr.left == null) {
                         curr.left = new Node(n);
+                        list.add(curr.left);
                         end = true;
                     } else
                         curr = curr.left;
                 } else {
                     if(curr.right == null) {
                         curr.right = new Node(n);
+                        list.add(curr.right);
                         end = true;
                     } else
                         curr = curr.right;

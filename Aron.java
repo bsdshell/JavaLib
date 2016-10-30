@@ -6,11 +6,11 @@ import java.util.*;
 import java.net.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import classfile.*;
-
+import org.apache.commons.lang3.StringUtils;
 
 public final class Aron {
     final static String lineStr = "\n--------------------------------------------------------------------------";
+
     public static void line() {
         System.out.println(lineStr);
 
@@ -388,6 +388,15 @@ public final class Aron {
         }
     }
 
+    public static void preorder(Node curr, int level) {
+        if(curr != null) {
+            String s = StringUtils.leftPad("", 2*level, '-');
+            System.out.println(s + "[" + curr.data + "]");
+            preorder(curr.left, level + 1);
+            preorder(curr.right, level + 1);
+        }
+    }
+
     public static void preorderGraph(Node curr){
         if(curr != null){
             Print.p(curr.data);
@@ -421,6 +430,7 @@ public final class Aron {
             inorder(curr.right);
         }
     }
+
 
     public static void inorderl(Node curr) {
         if(curr != null) {
@@ -932,6 +942,20 @@ public final class Aron {
         return output.toString();
     }
 
+
+    // spawn a complete new process
+    // String cmd = "/opt/local/bin/mvim";
+    // spawnProcess(cmd);
+    public static void spawnProcess(String cmd){
+        try {
+            Runtime.getRuntime().exec(cmd);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Finished");
+    }
+
+    // exec command, execute command, parent => child process 
     public static String executeCommand(String command) {
         StringBuffer output = new StringBuffer();
         Process p;
@@ -952,26 +976,69 @@ public final class Aron {
         return output.toString();
     }
 
+
     // pretty print binary tree
-    // int indent = 0
-    public static void prettyPrint(Node r, int indent) {
-        if( r != null) {
-            System.out.print("["+r.data+"]");
-            if(r.right != null)
-                System.out.print("[  ]");
-
-            prettyPrint(r.right, indent+1);
-
-            if(r.left != null) {
-                System.out.println();
-                for(int i=0; i<indent; i++) {
-                    System.out.print("[  ][  ]");
-                }
+    public static void prettyPrint(Node curr, int level){
+        String s = StringUtils.leftPad("", 2*level, ' ');
+        if(curr != null){
+            if(curr.isLeft == null)
+                Print.pl(s + "[" + curr.data + "]");
+            else{
+                if(curr.isLeft)
+                    Print.pl(s + CColor.YELLOW + "L[" + curr.data + "]" +  CColor.RESET);
+                else 
+                    Print.pl(s + "R[" + curr.data + "]");
             }
-            prettyPrint(r.left, indent+1);
+
+            if(curr.left != null)
+                curr.left.isLeft = true;
+            prettyPrint(curr.left, level + 1);
+
+            if(curr.right != null)
+                curr.right.isLeft = false;
+            prettyPrint(curr.right, level + 1);
+        }else{
+            Print.pl(s + "[ ]");
+        }
+    } 
+
+    // pretty print binary tree
+    public static void prettyPrint(Node curr, int level, boolean isleaf){
+        String s = StringUtils.leftPad("", 4*level, ' ');
+        if(curr != null){
+            if(curr.isLeft == null)
+                Print.pl(s + "[" + curr.data + "]");
+            else{
+                if(curr.isLeft)
+                    Print.pl(s + CColor.YELLOW + "[" + curr.data + "]" +  CColor.RESET);
+                else 
+                    Print.pl(s + "[" + curr.data + "]");
+            }
+
+            if(curr.left != null)
+                curr.left.isLeft = true;
+            prettyPrint(curr.left, level + 1, curr.left == null && curr.right == null ? true : false);
+
+            if(curr.right != null)
+                curr.right.isLeft = false;
+            prettyPrint(curr.right, level + 1, curr.left == null && curr.right == null ? true : false);
+        }else{
+            if(!isleaf)
+            Print.pl(s + "[ ]");
+        }
+    } 
+
+    public static void prettyPrintGeneral(Node curr, int level){
+        if(curr != null){
+            String s = StringUtils.leftPad("", 4*level, ' ');
+            Print.pl(s + "[" + curr.data + "]");
+            for(Node n : curr.list){
+                prettyPrintGeneral(n, level + 1);
+            }
         }
     }
 
+    // print Binary Tree image or Binary Tree graph
     public static void binImage(Node r) {
         List<String> list = new ArrayList<String>();
         String str1 = "digraph G{\n";
@@ -987,8 +1054,17 @@ public final class Aron {
         Aron.writeFile(fName, list);
 
         //TODO try to run the command in background, "command &" doesn't work 
+
         String command = "/Applications/Graphviz.app/Contents/MacOS/Graphviz bintree.gv";
-        Aron.executeCommand(command);
+        
+        try {
+            //Runtime.getRuntime().exec("/opt/local/bin/mvim");
+            Runtime.getRuntime().exec(command);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //Aron.executeCommand(command);
     }
 
     public static void printGraphviz(Node root, int level, List<String> list, int leftRight) {
