@@ -406,6 +406,25 @@ public final class Aron {
         }
     }
 
+    // *postorder* with *two_stacks* two stacks
+    public static void postorderTwoStacks(Node r){
+        Stack<Node> s1 = new Stack<>();
+        Stack<Node> s2 = new Stack<>();
+        if(r != null){
+            s1.push(r);
+            while(!s1.empty()){
+                Node n = s1.pop();
+                if(n.left != null)
+                    s1.push(n.left);
+                if(n.right != null)
+                    s1.push(n.right);
+                s2.push(n);
+            }
+            while(!s2.empty())
+                Print.pbl(s2.pop().data);
+        }
+    }
+    
     public static void postorder(Node curr) {
         if(curr != null) {
             postorder(curr.left);
@@ -414,6 +433,7 @@ public final class Aron {
         }
     }
 
+    // postorder graph *postorder_graph*
     public static void postorderGraph(Node curr){
         if(curr != null){
             for(Node n : curr.list){
@@ -581,9 +601,17 @@ public final class Aron {
         System.out.println();
     }
 
-    public static <T> void printList(List<T> list, String line) {
+    public static <T> void printList(List<T> list, String b) {
         for(T item : list) {
-            if(line.length() > 0)
+            //System.out.print("[" + item + "]");
+            Print.pb(item, b);
+        }
+        System.out.println();
+    }
+
+    public static <T> void printList(List<T> list, int num) {
+        for(T item : list) {
+            if(num == 0)
                 System.out.print("[" + item + "]");
             else
                 System.out.println("[" + item + "]");
@@ -739,8 +767,29 @@ public final class Aron {
         }
     }
 
-    // read one line from file
-    public static List<String> readFileOneLine(String fname) {
+    public static List<String> readFileOneLineSplit(String fname, String delimiter) {
+        List<String> list = new ArrayList<String>();
+        if(fname != null) {
+            try(BufferedReader br = new BufferedReader(new FileReader(fname))) {
+                String line;
+                while((line = br.readLine()) != null) {
+                    break;
+                }
+                String[] arr = line.trim().split("\\s+");
+                for(int i=0; i<arr.length; i++) {
+                    if(arr[i].length() > 0)
+                        list.add(arr[i]);
+                }
+                Aron.printList(list);
+            } catch(IOException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        return list;
+    }
+
+    // read one line from file, read file
+    public static List<String> readFileOneLineSplit(String fname) {
         List<String> list = new ArrayList<String>();
         if(fname != null) {
             try(BufferedReader br = new BufferedReader(new FileReader(fname))) {
@@ -775,6 +824,43 @@ public final class Aron {
             io.printStackTrace();
         }
         return list;
+    }
+
+    /**
+    *  split line with empty line separator 
+    *  
+    *  line1
+    *  line2
+    *  
+    *  line2
+    *  
+    *  line3
+    *  
+    *  output [line1 line2] [line2] [line3]
+    */
+    public static List<ArrayList<String>> readFileSaperater(String fileName) {
+        List<ArrayList<String>> list2d = new ArrayList<ArrayList<String>>(); 
+        try {
+            BufferedReader in = new BufferedReader(new FileReader(fileName));
+            String str;
+            String line = "";
+            
+            ArrayList<String> list = new ArrayList<String>(); 
+            while((str = in.readLine()) != null) {
+                String goodStr = str.trim();
+                if(goodStr.length() > 0){
+                    list.add(goodStr);
+                }else{
+                    if(list.size() > 0)
+                        list2d.add(list);
+                    list = new ArrayList<>();
+                }
+            }
+            in.close();
+        } catch(IOException io) {
+            io.printStackTrace();
+        }
+        return list2d;
     }
 
     // write to file
@@ -977,7 +1063,7 @@ public final class Aron {
     }
 
 
-    // pretty print binary tree
+    // pretty print binary tree *printbst* *printbinarytree*
     public static void prettyPrint(Node curr, int level){
         String s = StringUtils.leftPad("", 2*level, ' ');
         if(curr != null){
@@ -1002,8 +1088,8 @@ public final class Aron {
         }
     } 
 
-    // pretty print binary tree
-    public static void prettyPrint(Node curr, int level, boolean isleaf){
+    // pretty print binary tree *prettyprint*
+    public static void prettyPrint(Node curr, int level, boolean isLeaf){
         String s = StringUtils.leftPad("", 4*level, ' ');
         if(curr != null){
             if(curr.isLeft == null)
@@ -1023,11 +1109,12 @@ public final class Aron {
                 curr.right.isLeft = false;
             prettyPrint(curr.right, level + 1, curr.left == null && curr.right == null ? true : false);
         }else{
-            if(!isleaf)
+            if(!isLeaf)
             Print.pl(s + "[ ]");
         }
     } 
 
+    // print general tree *prettytree* *printgeneraltree*
     public static void prettyPrintGeneral(Node curr, int level){
         if(curr != null){
             String s = StringUtils.leftPad("", 4*level, ' ');
@@ -1038,7 +1125,7 @@ public final class Aron {
         }
     }
 
-    // print Binary Tree image or Binary Tree graph
+    // print Binary Tree image or Binary Tree graph *printimg* *printbstimg*
     public static void binImage(Node r) {
         List<String> list = new ArrayList<String>();
         String str1 = "digraph G{\n";
@@ -1067,6 +1154,7 @@ public final class Aron {
         //Aron.executeCommand(command);
     }
 
+    // print *printgraphic*
     public static void printGraphviz(Node root, int level, List<String> list, int leftRight) {
         if(root != null) {
             String str1 = "";
@@ -1123,6 +1211,24 @@ public final class Aron {
         } else
             return false;
         return true;
+    }
+
+    public static BST createBin(){
+        Aron.beg();
+        BST b1 = new BST();
+        b1.insert(10);
+        b1.insert(5);
+        b1.insert(15);
+        b1.insert(1);
+        b1.insert(9);
+
+        int index = 0;
+        boolean isLeaf = true;
+        prettyPrint(b1.root, index, isLeaf);
+        //binImage(b1.root);
+
+        Aron.end();
+        return b1; 
     }
 
     public static String extractEmail(String strPhone){
@@ -1263,4 +1369,141 @@ public final class Aron {
         }
     }
     //]
+
+    //[ file=findminmax.html title=""
+    // /Users/cat/myfile/github/java/RotatedSortedArrayMaxMin.java 
+    // find the index of minimum element of an array
+    // make sure to test the case [2, 1]
+    public static int findMinimumIndex(int[] arr, int lo, int hi){
+        if( arr[lo] <= arr[hi])
+            return lo;
+        else{
+            // [2, 1]
+            // [3, 1, 2]
+            // =>[3, 1] => [1]
+            int mid = (lo + hi)/2;
+            if(arr[lo] < arr[mid])
+                return findMinimumIndex(arr, mid, hi);
+            else if(arr[lo] > arr[mid])
+                return findMinimumIndex(arr, lo, mid);
+            else 
+                return hi;
+        }
+    }
+    public static int findMaximumIndex(int[] arr, int lo, int hi){
+        if(arr[lo] <= arr[hi])
+            return hi;
+        else{
+            // [2, 1]
+            int mid = (lo + hi)/2;
+            if( arr[lo] < arr[mid])
+                return findMaximumIndex(arr, mid, hi);
+            else if(arr[lo] > arr[mid]) 
+                return findMaximumIndex(arr, lo, mid);
+            else
+                return lo;
+        }
+    }
+    //]
+
+    // /Users/cat/myfile/github/java/TryRArr.java
+    public static void spiral(int[][] arr){
+        int height = arr.length;
+        int width= arr[0].length;
+        int min = Math.min(width, height);
+        int k = 0;
+        while(k < width){
+            // [2, 1]
+            // horizonal 
+            if(height - 2*k == 1){
+                for(int i=k; i<width-k; i++)
+                    Print.p(arr[k][i]); // horizontal
+
+                break;
+            }
+            else if(width - 2*k == 1){
+                for(int i=k; i<height-k; i++)
+                    Print.p(arr[i][k]); // vertical 
+
+                break;
+            }
+            else{
+                for(int i=k; i<width-1-k; i++)
+                    Print.p(arr[k][i]);
+                for(int i=k; i<height-1-k; i++)
+                    Print.p(arr[i][width-1-k]);
+                for(int i=k; i<width-1-k; i++)
+                    Print.p(arr[height-1-k][width-1-i]);
+                for(int i=k; i<height-1-k; i++)
+                    Print.p(arr[height-1-i][k]);
+            }
+            k++;
+        }
+    }
+
+    // print general tree
+    public static void inorderGeneralTree(Node r){ 
+        Print.p(r.data);
+        for(Node n : r.list)
+            inorderGeneralTree(n);
+    }
+
+    // create general tree
+    public static Node createGeneralTree(){
+        Node r = new Node(1); 
+        Node n1 = new Node(2);
+        Node n2 = new Node(3);
+        Node n3 = new Node(4);
+
+        Node nn1 = new Node(11);
+        Node nn2 = new Node(12);
+        Node nn3 = new Node(13);
+
+        Node nn4 = new Node(14);
+        Node nn5 = new Node(15);
+
+        n1.list.add(nn1);
+        n1.list.add(nn2);
+        n1.list.add(nn3);
+
+        n2.list.add(nn4);
+        n2.list.add(nn5);
+
+        r.list.add(n1);
+        r.list.add(n2);
+        r.list.add(n3);
+        return r;
+    }
+
+    // gf /Users/cat/myfile/github/java/SerializeGeneralTree.java
+    public static void serializeGeneralTree(Node r, BufferedWriter bw){
+        if(r != null){
+            try{
+            bw.write(r.data + " ");
+            for(Node n : r.list)
+                serializeGeneralTree(n, bw);
+
+            bw.write(" # ");
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+        }
+    }
+
+    // use one stack to deserialize general tree
+    public static Node deserializeGeneralTree(List<String> list){ 
+        Stack<Node> stack = new Stack<>();
+        for(String s : list){
+            if(!s.equals("#")){
+                Node n = new Node(s);
+                stack.push(n);
+            }else{
+                if(stack.size() > 1){
+                    Node top = stack.pop();
+                    stack.peek().list.add(top);
+                }
+            }
+        }
+        return stack.peek();
+    }
 }

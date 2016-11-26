@@ -1,0 +1,226 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+$	/Users/cat/myfile/github/JavaLib/tags	/^Aron	\/Users\/cat\/myfile\/github\/JavaLib\/Aron.java	\/^public final class Aron {$\/;"	c$/;"	f	class:Aron
+AllTest	/Users/cat/myfile/github/JavaLib/test/AllTest.java	/^public class AllTest{$/;"	c
+Aron	/Users/cat/myfile/github/JavaLib/Aron.java	/^public final class Aron {$/;"	c
+Aron	/Users/cat/myfile/github/JavaLib/tags	/^Aron	\/Users\/cat\/myfile\/github\/JavaLib\/Aron.java	\/^public final class Aron {$\/;"	c$/;"	c
+BLACK	/Users/cat/myfile/github/JavaLib/CColor.java	/^    public static final String BLACK = "\\u001B[30m";$/;"	f	class:CColor
+BLUE	/Users/cat/myfile/github/JavaLib/CColor.java	/^    public static final String BLUE = "\\u001B[34m";$/;"	f	class:CColor
+BST	/Users/cat/myfile/github/JavaLib/BST.java	/^    public BST() {$/;"	m	class:BST
+BST	/Users/cat/myfile/github/JavaLib/BST.java	/^public class BST {$/;"	c
+CColor	/Users/cat/myfile/github/JavaLib/CColor.java	/^public final class CColor{$/;"	c
+CYAN	/Users/cat/myfile/github/JavaLib/CColor.java	/^    public static final String CYAN = "\\u001B[36m";$/;"	f	class:CColor
+GREEN	/Users/cat/myfile/github/JavaLib/CColor.java	/^    public static final String GREEN = "\\u001B[32m";$/;"	f	class:CColor
+H	/Users/cat/myfile/github/JavaLib/jar/AronLib.jar	/^öH;º≠oÌ‡Õﬁ:¿['x[Gßh~™◊∫h5⁄[¥ıä«¯4_|˘;#ËKâÊ’‚ı3ã◊ı«…Î¢„Â5◊‚uò≈ÎOóE>W|Ôà˝Ê†mﬂgÅÔs¿˜π‡˚<}>¯æ/;"	
+MagicSquare	/Users/cat/myfile/github/JavaLib/MagicSquare.java	/^public class MagicSquare{$/;"	c
+Node	/Users/cat/myfile/github/JavaLib/Node.java	/^    public Node(int data) {$/;"	m	class:Node
+Node	/Users/cat/myfile/github/JavaLib/Node.java	/^public class Node{$/;"	c
+OneQueue	/Users/cat/myfile/github/JavaLib/BST.java	/^    public void OneQueue(Node curr) {$/;"	m	class:BST
+PNode	/Users/cat/myfile/github/JavaLib/PNode.java	/^    public PNode(int n) {$/;"	m	class:PNode
+PNode	/Users/cat/myfile/github/JavaLib/PNode.java	/^public class PNode {$/;"	c
+PURPLE	/Users/cat/myfile/github/JavaLib/CColor.java	/^    public static final String PURPLE = "\\u001B[35m";$/;"	f	class:CColor
+Point	/Users/cat/myfile/github/JavaLib/Point.java	/^    public Point(int x, int y){$/;"	m	class:Point
+Point	/Users/cat/myfile/github/JavaLib/Point.java	/^public class Point{$/;"	c
+Print	/Users/cat/myfile/github/JavaLib/Print.java	/^public final class Print{$/;"	c
+RED	/Users/cat/myfile/github/JavaLib/CColor.java	/^    public static final String RED = "\\u001B[31m";$/;"	f	class:CColor
+RESET	/Users/cat/myfile/github/JavaLib/CColor.java	/^    public static final String RESET = "\\u001B[0m";$/;"	f	class:CColor
+Remove	/Users/cat/myfile/github/JavaLib/SingleLinkedList.java	/^    public void Remove(Node no) {$/;"	m	class:SingleLinkedList
+Reverse	/Users/cat/myfile/github/JavaLib/SingleLinkedList.java	/^    public void Reverse(Node curr) {$/;"	m	class:SingleLinkedList
+SNode	/Users/cat/myfile/github/JavaLib/SNode.java	/^    public SNode(int n) {$/;"	m	class:SNode
+SNode	/Users/cat/myfile/github/JavaLib/SNode.java	/^public class SNode {$/;"	c
+SingleLinkedList	/Users/cat/myfile/github/JavaLib/SingleLinkedList.java	/^    public SingleLinkedList() {$/;"	m	class:SingleLinkedList
+SingleLinkedList	/Users/cat/myfile/github/JavaLib/SingleLinkedList.java	/^public class SingleLinkedList {$/;"	c
+StopWatch	/Users/cat/myfile/github/JavaLib/StopWatch.java	/^public class StopWatch {$/;"	c
+Test	/Users/cat/myfile/github/JavaLib/Test.java	/^public final class Test extends TestBase{$/;"	c
+TestBase	/Users/cat/myfile/github/JavaLib/TestBase.java	/^class TestBase{$/;"	c
+Ut	/Users/cat/myfile/github/JavaLib/Ut.java	/^public final class Ut{$/;"	c
+WHITE	/Users/cat/myfile/github/JavaLib/CColor.java	/^    public static final String WHITE = "\\u001B[37m";$/;"	f	class:CColor
+YELLOW	/Users/cat/myfile/github/JavaLib/CColor.java	/^    public static final String YELLOW = "\\u001B[33m";$/;"	f	class:CColor
+append	/Users/cat/myfile/github/JavaLib/SingleLinkedList.java	/^    public void append(Node no) {$/;"	m	class:SingleLinkedList
+append	/Users/cat/myfile/github/JavaLib/SingleLinkedList.java	/^    public void append(int n) {$/;"	m	class:SingleLinkedList
+atoInt	/Users/cat/myfile/github/JavaLib/Aron.java	/^    public static int atoInt(String str){$/;"	m	class:Aron
+beg	/Users/cat/myfile/github/JavaLib/Aron.java	/^    public static void beg() {$/;"	m	class:Aron
+charIndex	/Users/cat/myfile/github/JavaLib/Aron.java	/^    public static int charIndex(char ch) {$/;"	m	class:Aron
+charToInt	/Users/cat/myfile/github/JavaLib/Aron.java	/^    public static int charToInt(char ch){$/;"	m	class:Aron
+charToString	/Users/cat/myfile/github/JavaLib/Aron.java	/^    public static String charToString(char ch){$/;"	m	class:Aron
+checkDiagonal	/Users/cat/myfile/github/JavaLib/MagicSquare.java	/^    boolean checkDiagonal(int[][] array, int initSum){$/;"	m	class:MagicSquare
+checkRowCol	/Users/cat/myfile/github/JavaLib/MagicSquare.java	/^    boolean checkRowCol(int[][] array, int initSum){$/;"	m	class:MagicSquare
+classfile	/Users/cat/myfile/github/JavaLib/Aron.java	/^package classfile;$/;"	p
+classfile	/Users/cat/myfile/github/JavaLib/BST.java	/^package classfile;$/;"	p
+classfile	/Users/cat/myfile/github/JavaLib/CColor.java	/^package classfile;$/;"	p
+classfile	/Users/cat/myfile/github/JavaLib/MagicSquare.java	/^package classfile;$/;"	p
+classfile	/Users/cat/myfile/github/JavaLib/Node.java	/^package classfile;$/;"	p
+classfile	/Users/cat/myfile/github/JavaLib/PNode.java	/^package classfile;$/;"	p
+classfile	/Users/cat/myfile/github/JavaLib/Point.java	/^package classfile;$/;"	p
+classfile	/Users/cat/myfile/github/JavaLib/Print.java	/^package classfile;$/;"	p
+classfile	/Users/cat/myfile/github/JavaLib/SNode.java	/^package classfile;$/;"	p
+classfile	/Users/cat/myfile/github/JavaLib/SingleLinkedList.java	/^package classfile;$/;"	p
+classfile	/Users/cat/myfile/github/JavaLib/StopWatch.java	/^package classfile;$/;"	p
+classfile	/Users/cat/myfile/github/JavaLib/Test.java	/^package classfile;$/;"	p
+classfile	/Users/cat/myfile/github/JavaLib/TestBase.java	/^package classfile;$/;"	p
+classfile	/Users/cat/myfile/github/JavaLib/Ut.java	/^package classfile;$/;"	p
+contains	/Users/cat/myfile/github/JavaLib/BST.java	/^    public boolean contains(int n) {$/;"	m	class:BST
+data	/Users/cat/myfile/github/JavaLib/Node.java	/^    public Integer data;$/;"	f	class:Node
+data	/Users/cat/myfile/github/JavaLib/PNode.java	/^    public int data;$/;"	f	class:PNode
+data	/Users/cat/myfile/github/JavaLib/SNode.java	/^    public int data;$/;"	f	class:SNode
+decimalToBinary	/Users/cat/myfile/github/JavaLib/Aron.java	/^    public static String decimalToBinary(int n){$/;"	m	class:Aron
+end	/Users/cat/myfile/github/JavaLib/Aron.java	/^    public static void end() {$/;"	m	class:Aron
+equals	/Users/cat/myfile/github/JavaLib/Node.java	/^    public boolean equals(Object obj){$/;"	m	class:Node
+excelHeaderToNumber	/Users/cat/myfile/github/JavaLib/Aron.java	/^    public static int excelHeaderToNumber(String str) {$/;"	m	class:Aron
+f	/Users/cat/myfile/github/JavaLib/Test.java	/^    public static void f(Object n1, Object n2){$/;"	m	class:Test
+f	/Users/cat/myfile/github/JavaLib/Test.java	/^    public static void f(boolean b) {$/;"	m	class:Test
+findNode	/Users/cat/myfile/github/JavaLib/Aron.java	/^    public static boolean findNode(Node root, int n) {$/;"	m	class:Aron
+findNode	/Users/cat/myfile/github/JavaLib/BST.java	/^    public boolean findNode(int n) {$/;"	m	class:BST
+findSum	/Users/cat/myfile/github/JavaLib/BST.java	/^    public boolean findSum(Node r, int n) {$/;"	m	class:BST
+format	/Users/cat/myfile/github/JavaLib/tags	/^!_TAG_FILE_FORMAT	2	\/extended format; --format=1 will not append ;" to lines\/$/;"	
+getElapsedTime	/Users/cat/myfile/github/JavaLib/StopWatch.java	/^  public long getElapsedTime() {$/;"	m	class:StopWatch
+getElapsedTimeSecs	/Users/cat/myfile/github/JavaLib/StopWatch.java	/^  public long getElapsedTimeSecs() {$/;"	m	class:StopWatch
+getHead	/Users/cat/myfile/github/JavaLib/SingleLinkedList.java	/^    public Node getHead() {$/;"	m	class:SingleLinkedList
+getNode	/Users/cat/myfile/github/JavaLib/Aron.java	/^    public static Node getNode(Node r, int m){$/;"	m	class:Aron
+getRoot	/Users/cat/myfile/github/JavaLib/BST.java	/^    public Node getRoot() {$/;"	m	class:BST
+getTail	/Users/cat/myfile/github/JavaLib/SingleLinkedList.java	/^    public Node getTail() {$/;"	m	class:SingleLinkedList
+hashCode	/Users/cat/myfile/github/JavaLib/Node.java	/^    public int hashCode(){$/;"	m	class:Node
+head	/Users/cat/myfile/github/JavaLib/SingleLinkedList.java	/^    public Node head;$/;"	f	class:SingleLinkedList
+inorder	/Users/cat/myfile/github/JavaLib/BST.java	/^    public void inorder(Node curr) {$/;"	m	class:BST
+insert	/Users/cat/myfile/github/JavaLib/BST.java	/^    public void insert(int n) {$/;"	m	class:BST
+intToAlphabet	/Users/cat/myfile/github/JavaLib/Aron.java	/^    public static String intToAlphabet(int n) {$/;"	m	class:Aron
+intToAlphabetUpper	/Users/cat/myfile/github/JavaLib/Aron.java	/^    public static String intToAlphabetUpper(int n) {$/;"	m	class:Aron
+intToChar	/Users/cat/myfile/github/JavaLib/Aron.java	/^    public static char intToChar(int num){$/;"	m	class:Aron
+isBST	/Users/cat/myfile/github/JavaLib/Aron.java	/^    public static boolean isBST(Node root, Node previous) {$/;"	m	class:Aron
+isLeft	/Users/cat/myfile/github/JavaLib/Node.java	/^    public Boolean isLeft;$/;"	f	class:Node
+isVisited	/Users/cat/myfile/github/JavaLib/Node.java	/^    public boolean isVisited;$/;"	f	class:Node
+isVisited	/Users/cat/myfile/github/JavaLib/PNode.java	/^    public boolean isVisited;$/;"	f	class:PNode
+iw˜	/Users/cat/myfile/github/JavaLib/jar/jsoup-1.9.2.jar	/^C÷®o_ø°e„ı≠õ6oYßçDŸªéOƒéﬁiƒ…‘]f⁄ ;~‚‰›;::wÓÍ∫iw˜ûΩ=Ω}˝7ﬂ≤o`phxˇ≠™"!í” €fıè%&ñ‰Øç˛b˚ÁπµÌdâ”\/µ·∫+4.KJ‹HLÁ°é:vŒKKı#‹>nnÃ?íuwÀ˛•zNË$/;"	
+l	/Users/cat/myfile/github/JavaLib/Ut.java	/^    public static void l() {$/;"	m	class:Ut
+left	/Users/cat/myfile/github/JavaLib/Aron.java	/^    public static <T> List<T> left(List<T> list, int index) {$/;"	m	class:Aron
+left	/Users/cat/myfile/github/JavaLib/Node.java	/^    public Node left;$/;"	f	class:Node
+left	/Users/cat/myfile/github/JavaLib/PNode.java	/^    public PNode left;$/;"	f	class:PNode
+levelOrder	/Users/cat/myfile/github/JavaLib/Aron.java	/^    public static void levelOrder(Node root) {$/;"	m	class:Aron
+levelOrder	/Users/cat/myfile/github/JavaLib/BST.java	/^    public void levelOrder() {$/;"	m	class:BST
+line	/Users/cat/myfile/github/JavaLib/Aron.java	/^    public static void line() {$/;"	m	class:Aron
+line	/Users/cat/myfile/github/JavaLib/tags	/^line	\/Users\/cat\/myfile\/github\/JavaLib\/Aron.java	\/^    public static void line() {$\/;"	m	class:Aron$/;"	m	class:Aron
+lineStr	/Users/cat/myfile/github/JavaLib/Aron.java	/^    final static String lineStr = "\\n--------------------------------------------------------------------------";$/;"	f	class:Aron
+lineStr	/Users/cat/myfile/github/JavaLib/Ut.java	/^    final static String lineStr = "\\n--------------------------------------------------------------------------";$/;"	f	class:Ut
+list	/Users/cat/myfile/github/JavaLib/BST.java	/^    public List<Node> list = new ArrayList<Node>();$/;"	f	class:BST
+list	/Users/cat/myfile/github/JavaLib/Node.java	/^    public List<Node> list;$/;"	f	class:Node
+listDirPrint	/Users/cat/myfile/github/JavaLib/Aron.java	/^    public static void listDirPrint(String directoryName) {$/;"	m	class:Aron
+listFileDirPrint	/Users/cat/myfile/github/JavaLib/Aron.java	/^    public static void listFileDirPrint(String directoryName) {$/;"	m	class:Aron
+main	/Users/cat/myfile/github/JavaLib/test/AllTest.java	/^    public static void main(String[] args) {$/;"	m	class:AllTest
+name	/Users/cat/myfile/github/JavaLib/Aron.java	/^    public static void name() {$/;"	m	class:Aron
+next	/Users/cat/myfile/github/JavaLib/Node.java	/^    public Node next;$/;"	f	class:Node
+next	/Users/cat/myfile/github/JavaLib/PNode.java	/^    public PNode next;$/;"	f	class:PNode
+next	/Users/cat/myfile/github/JavaLib/SNode.java	/^    public SNode next;$/;"	f	class:SNode
+next	/Users/cat/myfile/github/JavaLib/SingleLinkedList.java	/^    static Node next=null;$/;"	f	class:SingleLinkedList
+nonull	/Users/cat/myfile/github/JavaLib/Ut.java	/^    public static boolean nonull(Object obj){$/;"	m	class:Ut
+numberToExcelHeader	/Users/cat/myfile/github/JavaLib/Aron.java	/^    public static String numberToExcelHeader(int n) {$/;"	m	class:Aron
+p	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void p(Object a) {$/;"	m	class:Print
+p	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void p(String a) {$/;"	m	class:Print
+p	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void p(boolean a) {$/;"	m	class:Print
+p	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void p(char a) {$/;"	m	class:Print
+p	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void p(char[] a) {$/;"	m	class:Print
+p	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void p(double a) {$/;"	m	class:Print
+p	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void p(float a) {$/;"	m	class:Print
+p	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void p(int a) {$/;"	m	class:Print
+p	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void p(long a) {$/;"	m	class:Print
+param	/Users/cat/myfile/github/JavaLib/TestBase.java	/^    public static String param(Integer n1, Integer n2) {$/;"	m	class:TestBase
+param	/Users/cat/myfile/github/JavaLib/TestBase.java	/^    public static String param(Integer n1, int n2) {$/;"	m	class:TestBase
+param	/Users/cat/myfile/github/JavaLib/TestBase.java	/^    public static String param(String n1, String n2) {$/;"	m	class:TestBase
+param	/Users/cat/myfile/github/JavaLib/TestBase.java	/^    public static String param(boolean n1) {$/;"	m	class:TestBase
+param	/Users/cat/myfile/github/JavaLib/TestBase.java	/^    public static String param(int n1) {$/;"	m	class:TestBase
+param	/Users/cat/myfile/github/JavaLib/TestBase.java	/^    public static String param(int n1, Integer n2) {$/;"	m	class:TestBase
+param	/Users/cat/myfile/github/JavaLib/TestBase.java	/^    public static String param(int n1, int n2) {$/;"	m	class:TestBase
+pb	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void pb(Object a) {$/;"	m	class:Print
+pb	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void pb(String a) {$/;"	m	class:Print
+pb	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void pb(boolean a) {$/;"	m	class:Print
+pb	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void pb(char a) {$/;"	m	class:Print
+pb	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void pb(char[] a) {$/;"	m	class:Print
+pb	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void pb(double a) {$/;"	m	class:Print
+pb	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void pb(float a) {$/;"	m	class:Print
+pb	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void pb(int a) {$/;"	m	class:Print
+pb	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void pb(long a) {$/;"	m	class:Print
+pbl	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void pbl(Object a) {$/;"	m	class:Print
+pbl	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void pbl(String a) {$/;"	m	class:Print
+pbl	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void pbl(boolean a) {$/;"	m	class:Print
+pbl	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void pbl(char a) {$/;"	m	class:Print
+pbl	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void pbl(char[] a) {$/;"	m	class:Print
+pbl	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void pbl(double a) {$/;"	m	class:Print
+pbl	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void pbl(float a) {$/;"	m	class:Print
+pbl	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void pbl(int a) {$/;"	m	class:Print
+pbl	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void pbl(long a) {$/;"	m	class:Print
+pc	/Users/cat/myfile/github/JavaLib/TestBase.java	/^    public static String pc(boolean b){$/;"	m	class:TestBase
+perm	/Users/cat/myfile/github/JavaLib/MagicSquare.java	/^    void perm(List<Integer> prefix, List<Integer> list, int len){$/;"	m	class:MagicSquare
+perm2	/Users/cat/myfile/github/JavaLib/MagicSquare.java	/^    void perm2(List<Integer> prefix, List<Integer> list){$/;"	m	class:MagicSquare
+pl	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void pl(Object a) {$/;"	m	class:Print
+pl	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void pl(boolean a) {$/;"	m	class:Print
+pl	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void pl(char a) {$/;"	m	class:Print
+pl	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void pl(char[] a) {$/;"	m	class:Print
+pl	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void pl(double a) {$/;"	m	class:Print
+pl	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void pl(float a) {$/;"	m	class:Print
+pl	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void pl(int a) {$/;"	m	class:Print
+pl	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void pl(long a) {$/;"	m	class:Print
+postorderTwoStacks	/Users/cat/myfile/github/JavaLib/Aron.java	/^    public static void postorderTwoStacks(Node r){$/;"	m	class:Aron
+pp	/Users/cat/myfile/github/JavaLib/BST.java	/^    public void pp(){$/;"	m	class:BST
+pp	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void pp(Object a) {$/;"	m	class:Print
+pp	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void pp(String a) {$/;"	m	class:Print
+pp	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void pp(boolean a) {$/;"	m	class:Print
+pp	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void pp(char a) {$/;"	m	class:Print
+pp	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void pp(char[] a) {$/;"	m	class:Print
+pp	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void pp(double a) {$/;"	m	class:Print
+pp	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void pp(float a) {$/;"	m	class:Print
+pp	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void pp(int a) {$/;"	m	class:Print
+pp	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void pp(long a) {$/;"	m	class:Print
+prefixSuffix	/Users/cat/myfile/github/JavaLib/Aron.java	/^    public static List<String> prefixSuffix(String str){$/;"	m	class:Aron
+preorder	/Users/cat/myfile/github/JavaLib/Aron.java	/^    public static void preorder(Node curr) {$/;"	m	class:Aron
+preorder	/Users/cat/myfile/github/JavaLib/Aron.java	/^    public static void preorder(Node curr, int level) {$/;"	m	class:Aron
+preorderGraph	/Users/cat/myfile/github/JavaLib/Aron.java	/^    public static void preorderGraph(Node curr){$/;"	m	class:Aron
+prettyLevel	/Users/cat/myfile/github/JavaLib/Aron.java	/^    public static List<Queue<Node>> prettyLevel(Node root, int level) {$/;"	m	class:Aron
+print	/Users/cat/myfile/github/JavaLib/BST.java	/^    public void print(){$/;"	m	class:BST
+print	/Users/cat/myfile/github/JavaLib/Print.java	/^    public static void	print(String a) {$/;"	m	class:Print
+printPoint	/Users/cat/myfile/github/JavaLib/Ut.java	/^    public static void printPoint(Point p){$/;"	m	class:Ut
+printSLL	/Users/cat/myfile/github/JavaLib/Aron.java	/^    public static void printSLL(Node head) {$/;"	m	class:Aron
+printTime	/Users/cat/myfile/github/JavaLib/StopWatch.java	/^  public long printTime() {$/;"	m	class:StopWatch
+random	/Users/cat/myfile/github/JavaLib/Node.java	/^    public Node random;$/;"	f	class:Node
+reverseIte	/Users/cat/myfile/github/JavaLib/SingleLinkedList.java	/^    public void reverseIte(Node curr) {$/;"	m	class:SingleLinkedList
+reverseLL	/Users/cat/myfile/github/JavaLib/SingleLinkedList.java	/^    static Node reverseLL(Node curr){$/;"	m	class:SingleLinkedList
+right	/Users/cat/myfile/github/JavaLib/Aron.java	/^    public static <T> List<T> right(List<T> list, int index) {$/;"	m	class:Aron
+right	/Users/cat/myfile/github/JavaLib/Node.java	/^    public Node right;$/;"	f	class:Node
+right	/Users/cat/myfile/github/JavaLib/PNode.java	/^    public PNode right;$/;"	f	class:PNode
+root	/Users/cat/myfile/github/JavaLib/BST.java	/^    public Node root;$/;"	f	class:BST
+running	/Users/cat/myfile/github/JavaLib/StopWatch.java	/^  private boolean running = false;$/;"	f	class:StopWatch	file:
+start	/Users/cat/myfile/github/JavaLib/StopWatch.java	/^  public void start() {$/;"	m	class:StopWatch
+startTime	/Users/cat/myfile/github/JavaLib/StopWatch.java	/^  private long startTime = 0;$/;"	f	class:StopWatch	file:
+stop	/Users/cat/myfile/github/JavaLib/StopWatch.java	/^  public void stop() {$/;"	m	class:StopWatch
+stopTime	/Users/cat/myfile/github/JavaLib/StopWatch.java	/^  private long stopTime = 0;$/;"	f	class:StopWatch	file:
+swap	/Users/cat/myfile/github/JavaLib/Aron.java	/^    public static void swap(int m, int n, Node root, Node[] first, Node[] second) {$/;"	m	class:Aron
+swapNode	/Users/cat/myfile/github/JavaLib/Aron.java	/^    public static void swapNode(Node r, int m, int n){$/;"	m	class:Aron
+t	/Users/cat/myfile/github/JavaLib/Test.java	/^    public static boolean t(Object n1, Object n2) {$/;"	m	class:Test
+t	/Users/cat/myfile/github/JavaLib/Test.java	/^    public static void t(Character n1, Character n2) {$/;"	m	class:Test
+t	/Users/cat/myfile/github/JavaLib/Test.java	/^    public static void t(Integer n1, Integer n2) {$/;"	m	class:Test
+t	/Users/cat/myfile/github/JavaLib/Test.java	/^    public static void t(Integer n1, int n2) {$/;"	m	class:Test
+t	/Users/cat/myfile/github/JavaLib/Test.java	/^    public static void t(Integer[] arr1, Integer[] arr2) {$/;"	m	class:Test
+t	/Users/cat/myfile/github/JavaLib/Test.java	/^    public static void t(String n1, String n2) {$/;"	m	class:Test
+t	/Users/cat/myfile/github/JavaLib/Test.java	/^    public static void t(boolean b) {$/;"	m	class:Test
+t	/Users/cat/myfile/github/JavaLib/Test.java	/^    public static void t(int n1, Integer n2) {$/;"	m	class:Test
+t	/Users/cat/myfile/github/JavaLib/Test.java	/^    public static void t(int n1, int n2) {$/;"	m	class:Test
+t	/Users/cat/myfile/github/JavaLib/Test.java	/^    public static void t(long n1, long n2) {$/;"	m	class:Test
+test0_extractEmail	/Users/cat/myfile/github/JavaLib/test/AllTest.java	/^    public static void test0_extractEmail(){$/;"	m	class:AllTest
+test0_extractPhoneNumber	/Users/cat/myfile/github/JavaLib/test/AllTest.java	/^    public static void test0_extractPhoneNumber(){$/;"	m	class:AllTest
+test1	/Users/cat/myfile/github/JavaLib/MagicSquare.java	/^    void test1(){$/;"	m	class:MagicSquare
+test1_extractEmail	/Users/cat/myfile/github/JavaLib/test/AllTest.java	/^    public static void test1_extractEmail(){$/;"	m	class:AllTest
+test1_extractPhoneNumber	/Users/cat/myfile/github/JavaLib/test/AllTest.java	/^    public static void test1_extractPhoneNumber(){$/;"	m	class:AllTest
+test2	/Users/cat/myfile/github/JavaLib/MagicSquare.java	/^    void test2(){$/;"	m	class:MagicSquare
+test2_extractEmail	/Users/cat/myfile/github/JavaLib/test/AllTest.java	/^    public static void test2_extractEmail(){$/;"	m	class:AllTest
+test2_extractPhoneNumber	/Users/cat/myfile/github/JavaLib/test/AllTest.java	/^    public static void test2_extractPhoneNumber(){$/;"	m	class:AllTest
+test3_extractEmail	/Users/cat/myfile/github/JavaLib/test/AllTest.java	/^    public static void test3_extractEmail(){$/;"	m	class:AllTest
+test3_extractPhoneNumber	/Users/cat/myfile/github/JavaLib/test/AllTest.java	/^    public static void test3_extractPhoneNumber(){$/;"	m	class:AllTest
+test4_extractEmail	/Users/cat/myfile/github/JavaLib/test/AllTest.java	/^    public static void test4_extractEmail(){$/;"	m	class:AllTest
+test4_extractPhoneNumber	/Users/cat/myfile/github/JavaLib/test/AllTest.java	/^    public static void test4_extractPhoneNumber(){$/;"	m	class:AllTest
+tt	/Users/cat/myfile/github/JavaLib/Test.java	/^    public static boolean tt(Object n1, Object n2) {$/;"	m	class:Test
+x	/Users/cat/myfile/github/JavaLib/Point.java	/^    public int x;$/;"	f	class:Point
+y	/Users/cat/myfile/github/JavaLib/Point.java	/^    public int y;$/;"	f	class:Point
+’	/Users/cat/myfile/github/JavaLib/jar/AronLib.jar	/^÷>B9ÉØC]:ïT@·Ú9SπÔcÎTª‹Üè5äÏB|Ö980äaÒ“Íjç√¨¡¿Å`E_bw˛˚®9ﬁ~·-ƒioπat‚Åxmù∏«g`∫u cp¨øØ¥˛‘©n7´!lv)¸ÛZÇydp>˘[¿*ÀyµT`û„ﬂ‰B√"ÑQâ(≠í$·πø¬~\\•«Y])DÓí'»U∞^⁄†,}»∏6ê˜4uÃ*X(®G˛]ì˛íVÃ[YÀÓ≠Ñ∏∫D@åJÔMì1"	éÎcmU5ÎC)·. nÆﬁÊW€]\\‡\/Á~úa†°ì¨n˚ãA&u*ë’`=w≥I◊1]=6gí^†ì‡tù√Wµ√U~ÜÖﬂ≥¢ØlëhıœÚıäÎì9óqê¡†nlag8C[âc˚ªù=l‰àÔd˛&É$/;"	
+◊Ë	/Users/cat/myfile/github/JavaLib/jar/AronLib.jar	/^¥◊&~MK¥∑∞f{ÉN’ﬁ§Â⁄o<…dCBgªË6£6—˜4÷Ãœ‘0xr◊áBÙrÎPcÜ…b‹ÖÉDüÕg¥ÔS™YÖAmT˚⁄˚/;"	

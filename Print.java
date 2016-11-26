@@ -120,6 +120,24 @@ public final class Print{
         System.out.print("[" + a + "]");
     }
 
+    public static <T> void pb(T a, String b) {
+        if(b.equals("("))
+            System.out.println("(" + a + ")");
+        else if (b.equals("<"))
+            System.out.println("<" + a + ">");
+        else if(b.equals("{"))
+            System.out.println("{" + a + "}");
+        else
+            System.out.println("[" + a + "]");
+    }
+
+    public static <T> void printList(List<T> list) {
+        for(T item : list) {
+            System.out.print("[" + item + "]");
+        }
+        System.out.println();
+    }
+
 
     public static void pbl(boolean a) {
         System.out.println("[" + a + "]");
@@ -147,6 +165,26 @@ public final class Print{
     }
     public static void pbl(String a) {
         System.out.println("[" + a + "]");
+    }
+    public static void pb(String a, String b) {
+        if(b.equals("("))
+            System.out.print(" (" + a + ") ");
+        else if (b.equals("<"))
+            System.out.print(" <" + a + "> ");
+        else if(b.equals("{"))
+            System.out.print(" {" + a + "} ");
+        else
+            System.out.print(" [" + a + "] ");
+    }
+    public static void pbl(String a, String b) {
+        if(b.equals("("))
+            System.out.println("(" + a + ")");
+        else if (b.equals("<"))
+            System.out.println("<" + a + ">");
+        else if(b.equals("{"))
+            System.out.println("{" + a + "}");
+        else
+            System.out.println("[" + a + "]");
     }
 }
 

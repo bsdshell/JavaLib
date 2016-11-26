@@ -20,6 +20,14 @@ public class Node{
         list = new ArrayList<Node>();
     }
 
+    public Node(String data) {
+        this.left = this.right = null;
+        this.data = Integer.parseInt(data);
+        this.isVisited = false;
+        this.isLeft = null;
+        list = new ArrayList<Node>();
+    }
+
     @Override
     public int hashCode(){
         return 0;
