@@ -127,6 +127,8 @@ public final class Print{
             System.out.println("<" + a + ">");
         else if(b.equals("{"))
             System.out.println("{" + a + "}");
+        else if(b.equals(" "))
+            System.out.println(" " + a + " ");
         else
             System.out.println("[" + a + "]");
     }

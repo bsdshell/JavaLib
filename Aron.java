@@ -8,13 +8,24 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.apache.commons.lang3.StringUtils;
 
-public final class Aron {
+public final class Aron{
     final static String lineStr = "\n--------------------------------------------------------------------------";
 
     public static void line() {
         System.out.println(lineStr);
-
     }
+
+    public static List<String> sortArray(String[] arr){
+        Arrays.sort(arr);
+        return Arrays.asList(arr);
+    }
+
+    public static String sortStr(String s) {
+        char[] arr = s.toCharArray();
+        Arrays.sort(arr);
+        return String.valueOf(arr);
+    }
+
     public static int charIndex(char ch) {
         Character chara = new Character(ch);
         if(Character.isLowerCase(ch)) {
@@ -755,6 +766,11 @@ public final class Aron {
         System.out.println();
     }
 
+    public static List<String> split(String str, String pattern){
+        String[] array = str.split(pattern);
+        return Arrays.asList(array); 
+    }
+
     public static void reverse(int[] arr) {
         if( arr != null) {
             int len = arr.length;
@@ -1281,6 +1297,12 @@ public final class Aron {
             }
         }
         return retNumber;
+    }
+
+    // is positive Integer from [-n -1 0 1 n] 
+    // gf /Users/cat/myfile/github/java/MatchNum.java
+    public static boolean isNumeric(String str){
+        return str.matches("[-+]?[1-9][0-9]*|0");
     }
 
     // print all permutation from given char[] array 
