@@ -1153,12 +1153,18 @@ public final class Aron{
         System.out.print(str2);
         list.add(str2);
 
-        String fName = "/Users/cat/myfile/github/java/bintree.gv";
+		Random ran = new Random();
+        int ranNum = ran.nextInt(9000);
+        String name = "bintree_" + ranNum + ".gv";
+
+        //String fName = "/Users/cat/myfile/github/java/bintree.gv";
+        String fName = "/Users/cat/myfile/github/java/" + name;
         Aron.writeFile(fName, list);
 
         //TODO try to run the command in background, "command &" doesn't work 
 
-        String command = "/Applications/Graphviz.app/Contents/MacOS/Graphviz bintree.gv";
+        //String command = "/Applications/Graphviz.app/Contents/MacOS/Graphviz bintree.gv";
+        String command = "/Applications/Graphviz.app/Contents/MacOS/Graphviz " + name;
         
         try {
             //Runtime.getRuntime().exec("/opt/local/bin/mvim");
@@ -1212,6 +1218,16 @@ public final class Aron{
                 printAllPath(r.right, arr, index+1);
             }
         }
+    }
+
+    public static Node cloneBinaryTree(Node r){
+        if(r != null){
+            Node parent = new Node(r.data);
+            parent.left = cloneBinaryTree(r.left);
+            parent.right = cloneBinaryTree(r.right);
+            return parent;
+        }
+        return null;
     }
 
     public static boolean equalBinaryTree(Node r1, Node r2) {

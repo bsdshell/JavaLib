@@ -3,10 +3,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Node{
-    public Node left;
     public Boolean isLeft;
+    public Node left;
     public Node right;
     public Node next;
+    public Node prev;
     public Integer data;
     public Node random;
     public List<Node> list;
@@ -14,6 +15,7 @@ public class Node{
 
     public Node(int data) {
         this.left = this.right = null;
+        this.prev = this.next = null;
         this.data = data;
         this.isVisited = false;
         this.isLeft = null;
@@ -22,7 +24,8 @@ public class Node{
 
     public Node(String data) {
         this.left = this.right = null;
-        this.data = Integer.parseInt(data);
+        if(data != null)
+            this.data = Integer.parseInt(data);
         this.isVisited = false;
         this.isLeft = null;
         list = new ArrayList<Node>();

@@ -10,6 +10,34 @@ public class SingleLinkedList {
         head = null;
     }
 
+    public void addFirst(int n) {
+        Node curr = head;
+        head = new Node(n);
+        head.next = curr;
+    }
+    public void addFirst(Node node) {
+        Node curr = head;
+        head = node;
+        head.next = curr;
+    }
+    
+    public int count() {
+        Node curr = head;
+        int count = 0;
+        while(curr != null){
+            count++;
+            curr = curr.next;
+        }
+        return count;
+    }
+    public void print() {
+        Node curr = head;
+        while(curr != null){
+            if(curr.data != null)
+                Print.pbl(curr.data);
+            curr = curr.next;
+        }
+    }
     public void append(int n) {
         Node curr = head;
         if(head == null)
@@ -21,7 +49,6 @@ public class SingleLinkedList {
             curr.next = new Node(n);
         }
     }
-
     public void append(Node no) {
         Node curr = head;
         if(head == null)
