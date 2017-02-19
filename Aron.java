@@ -3,10 +3,18 @@ package classfile;
 import java.io.*;
 import java.lang.String;
 import java.util.*;
+import java.util.Date;
 import java.net.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.io.output.TeeOutputStream;
+import java.text.SimpleDateFormat;
+
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 public final class Aron{
     final static String lineStr = "\n--------------------------------------------------------------------------";
@@ -15,6 +23,110 @@ public final class Aron{
         System.out.println(lineStr);
     }
 
+    public static double calculatePI(int nStep){
+       double pi = 1.0;
+       for(int i=1; i<nStep; i++){
+           if(i % 2 == 1)
+               pi += (double)-1/(2*i + 1);
+           else
+               pi += (double)1/(2*i + 1);
+       } 
+       Print.pbl(4*pi);
+       return 4*pi;
+    }
+
+    public static Logger logInit(String className, String fName){
+        Logger LOGGER = Logger.getLogger(className);
+        SimpleFormatter formatterTxt = new SimpleFormatter();
+        FileHandler fileTxt = null;
+
+        try{
+            fileTxt = new FileHandler(fName);
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+
+        LOGGER.setLevel(Level.INFO);
+        LOGGER.addHandler(fileTxt);
+        fileTxt.setFormatter(formatterTxt);
+        return LOGGER;
+    }
+
+    // generate random [0...n-1]
+    public static List<Integer> random(int n){
+		Random ran = new Random();
+        List<Integer> list = new ArrayList<Integer>(); 
+        for(int i=0; i<n; i++){
+            list.add(ran.nextInt(n));
+        } 
+        return list;
+    }
+    public static void time(){ now(); }
+
+    public static void date(){ now(); }
+    public static void now(){
+        String date = StringUtils.rightPad("Date=" + (new Date()), 20, " ");
+        Print.pbl(date);
+    }
+
+    public static String threadInfo(Thread t){
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("h:mm:ss a");
+
+        String id = StringUtils.rightPad("Id=" + t.currentThread().getId(), 6, " ");
+        String state = StringUtils.rightPad("State=" + t.getState(), 20, " ");
+        String strTime = StringUtils.rightPad("Time=" + sdf.format(date), 20, " ");
+        String tname = StringUtils.rightPad("Name=" + t.currentThread().getName(), 20, " ");
+        String retStr = id + state + strTime + tname;
+        Print.pbl(retStr);
+        return retStr; 
+    }
+
+    public static void threadInfo(Thread t, String fName){
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("h:mm:ss a");
+
+        String id = StringUtils.rightPad("Id=" + t.currentThread().getId(), 6, " ");
+        String state = StringUtils.rightPad("State=" + t.getState(), 20, " ");
+        String strTime = StringUtils.rightPad("Time=" + sdf.format(date), 20, " ");
+        String tname = StringUtils.rightPad("Name=" + t.currentThread().getName(), 20, " ");
+        String content = id + state + strTime + tname + "\n";
+        writeFileBoth(fName, content); 
+    }
+
+    public static void threadInfo(){
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("h:mm:ss a");
+
+        String id = StringUtils.rightPad("Id=" + Thread.currentThread().getId(), 6, " ");
+        String strTime = StringUtils.rightPad("Time=" + sdf.format(date), 20, " ");
+        String tname = StringUtils.rightPad("Name=" + Thread.currentThread().getName(), 20, " ");
+        Print.pbl(id + strTime + tname);
+    }
+
+
+    // generate random unique [0...n-1]
+    public static List<Integer> randomUnique(int n){
+		Random ran = new Random();
+        List<Integer> list = new ArrayList<Integer>(); 
+        
+        Integer[] arr = new Integer[n];
+        for(int i=0; i<n; i++){
+            arr[i] = i;
+        } 
+
+        for(int i=0; i<n; i++){
+            int r = ran.nextInt(n - i);
+            int tmp = arr[r]; 
+            arr[r] = arr[n-1-i];
+            arr[n-1-i] = tmp;
+        } 
+        return Arrays.asList(arr); 
+    }
+
+//    public static List<String> sortList(List<String> list){
+//        return Collections.sort(list); 
+//    }
     public static List<String> sortArray(String[] arr){
         Arrays.sort(arr);
         return Arrays.asList(arr);
@@ -47,6 +159,25 @@ public final class Aron{
             return "" + ch;
     }
 
+    // word boundary, boundary word, get all words, read all word
+    // get all words from a file, read all words from a file
+    public static List<String> getWords(String fileName){
+        Pattern pattern = Pattern.compile("(?<=^|\\s)[a-z]+(?=\\s|$)");
+        
+        List<String> wordList = new ArrayList<String>(); 
+        List<String> list = Aron.readFile(fileName);
+        for(String s : list){
+            String[] arr = s.split("\\s+");
+            for(String str : arr){
+                Matcher matcher = pattern.matcher(str.toLowerCase());
+                if(matcher.find()){
+                    wordList.add(matcher.group());
+                }
+            }
+        }
+        return wordList;
+    }
+
 
     // prefix and suffix
     // abc = [a, bc], [ab, c], [abc, ""]
@@ -74,16 +205,6 @@ public final class Aron{
         }
     }
 
-    public static void beg() {
-        System.out.println(CColor.GREEN + "[" + Thread.currentThread().getStackTrace()[2].getMethodName() + "]" + CColor.RESET + lineStr);
-    }
-    public static void end() {
-        System.out.println(lineStr);
-    }
-
-    public static void name() {
-        System.out.println("[" + Thread.currentThread().getStackTrace()[2].getMethodName() + "]");
-    }
 
     /**
     *
@@ -102,6 +223,59 @@ public final class Aron{
                 listFileDirPrint(file.getAbsolutePath());
             }
         }
+    }
+
+    // get all files from current directory
+    // return a list of absoluate paths
+    // getcurrent file, 
+    public static List<String> getCurrentFiles(String directoryName) {
+        List<String> list = new ArrayList<String>(); 
+        File directory = new File(directoryName);
+        File[] fList = directory.listFiles();
+        for (File file : fList) {
+            if (file.isFile()) {
+                list.add(file.getAbsolutePath());
+            } 
+        }
+        return list;
+    }
+
+    // get all files from current directory
+    // return a list of absoluate paths
+    // getcurrent file, 
+    public static List<String> getCurrentDir(String directoryName) {
+        List<String> list = new ArrayList<String>(); 
+        File directory = new File(directoryName);
+        File[] fList = directory.listFiles();
+        for (File file : fList) {
+            list.add(file.getAbsolutePath());
+        }
+        return list;
+    }
+
+    // get all directories from current directory
+    // return a list of absoluate paths in directoryName
+    public static List<String> getCurrentDirs(String directoryName) {
+        List<String> list = new ArrayList<String>(); 
+        File directory = new File(directoryName);
+        File[] fList = directory.listFiles();
+        for (File file : fList) {
+            if (file.isDirectory()) {
+                list.add(file.getAbsolutePath());
+            } 
+        }
+        return list;
+    }
+
+    public static void beg() {
+        System.out.println(CColor.GREEN + "[" + Thread.currentThread().getStackTrace()[2].getMethodName() + "]" + CColor.RESET + lineStr);
+    }
+    public static void end() {
+        System.out.println(lineStr);
+    }
+
+    public static void name() {
+        System.out.println("[" + Thread.currentThread().getStackTrace()[2].getMethodName() + "]");
     }
 
     // 1->'A'
@@ -592,6 +766,7 @@ public final class Aron{
             for(T item : list) {
                 System.out.print("[" + item + "]");
             }
+            Ut.l();
         }
         Ut.l();
     }
@@ -601,6 +776,7 @@ public final class Aron{
             for(T item : list) {
                 System.out.println("[" + item + "]");
             }
+            Ut.l();
         }
         Ut.l();
     }
@@ -608,6 +784,13 @@ public final class Aron{
     public static <T> void printList(List<T> list) {
         for(T item : list) {
             System.out.print("[" + item + "]");
+        }
+        System.out.println();
+    }
+
+    public static <T> void printListLn(List<T> list) {
+        for(T item : list) {
+            System.out.println("[" + item + "]");
         }
         System.out.println();
     }
@@ -766,9 +949,16 @@ public final class Aron{
         System.out.println();
     }
 
+    // split string with delimiter: pattern,
+    // empty string is removed
     public static List<String> split(String str, String pattern){
         String[] array = str.split(pattern);
-        return Arrays.asList(array); 
+        List<String> list = new ArrayList<String>(); 
+        for(String s : array){
+            if(s.trim().length() > 0)
+                list.add(s);
+        }
+        return list; 
     }
 
     public static void reverse(int[] arr) {
@@ -804,7 +994,7 @@ public final class Aron{
         return list;
     }
 
-    // read one line from file, read file
+    // read the FIRST line from file 
     public static List<String> readFileOneLineSplit(String fname) {
         List<String> list = new ArrayList<String>();
         if(fname != null) {
@@ -841,6 +1031,45 @@ public final class Aron{
         }
         return list;
     }
+
+    // read binary file byte[], and split it with new line '\n', not for '\r\n'
+    // return list of string with new line = '\n'
+    public static List<String> readFileLineByte(String fName, int bufSize){
+        List<String> list = new ArrayList<String>(); 
+        try {
+            FileInputStream fstream = new FileInputStream(fName);
+            int nbyte = 0;
+            //Read File Line By Line
+            byte[] arr = new byte[bufSize];
+            byte[] lineArr = new byte[bufSize];
+            int k=0;
+            while ((nbyte = fstream.read(arr)) != -1) {
+                String str = new String(arr);
+
+                for(int i=0; i<nbyte; i++){
+                    Print.pbl("char=" + arr[i]);
+                    if(arr[i] == '\n'){
+                        Print.pbl("newline=" + arr[i]);
+
+                        lineArr[k] = arr[i];
+                        list.add(new String(lineArr));
+                        k = 0;
+                        lineArr = new byte[bufSize];
+                    }else{
+                        lineArr[k] = arr[i];
+                        k++;
+                    }
+                }
+            }
+            //Close the input stream
+            fstream.close();
+        } catch (Exception e) {
+            System.err.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return list;
+    }
+
 
     /**
     *  split line with empty line separator 
@@ -887,6 +1116,7 @@ public final class Aron{
             out.write("hello java");
             out.close();
         } catch(Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -914,6 +1144,48 @@ public final class Aron{
         } catch(Exception e) {
         }
     }
+
+    public static void writeFileBoth(String fName, List<String> list) {
+        try {
+            File file = new File(fName);
+            FileOutputStream fos = new FileOutputStream(file);
+            TeeOutputStream bothOut = null;
+            bothOut = new TeeOutputStream(System.out, fos);
+
+            for(String str: list) {
+                byte[] contentInBytes = str.getBytes();
+                //we will want to print in standard "System.out" and in "file"
+                bothOut.write(contentInBytes);
+            }
+
+            if(bothOut != null){
+                bothOut.flush();
+                bothOut.close();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void writeFileBoth(String fName, String content) {
+        try {
+            File file = new File(fName);
+            byte[] contentInBytes = content.getBytes();
+
+            FileOutputStream fos = new FileOutputStream(file);
+            //we will want to print in standard "System.out" and in "file"
+            TeeOutputStream bothOut = new TeeOutputStream(System.out, fos);
+
+            bothOut.write(contentInBytes);
+            bothOut.flush();
+            bothOut.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     // list all directories only in directoryName
     public static List<String> listDir(String directoryName) {
@@ -998,8 +1270,29 @@ public final class Aron{
         }
     }
 
-    //[ file=quicksortpart.html title=""
-    // partition the array with pivot
+    public static List<Integer> listStrToInt(List<String> list){
+        List<Integer> nlist = new ArrayList<Integer>();
+        for(String s : list){
+            nlist.add(Integer.parseInt(s));
+        }
+        return nlist;
+    }
+
+    public static int partition(Integer[] arr, int lo, int hi){
+        int big = lo;
+        if(arr != null && lo < hi){
+            int pivot = arr[hi];
+            for(int i=lo; i<=hi; i++){
+                if(arr[i] <= pivot){
+                    Aron.swap(arr, big, i);
+                    if(i < hi)
+                        big++;
+                }
+            }
+        }
+        return big;
+    }
+
     public static int partition(int[] arr, int lo, int hi){
         int big = lo;
         if(arr != null && lo < hi){
@@ -1014,13 +1307,59 @@ public final class Aron{
         }
         return big;
     }
-    //]
 
     public static void quickSort(int[] arr, int lo, int hi){
         if(lo < hi){
             int pivotIndex = partition(arr, lo, hi);
             quickSort(arr, lo, pivotIndex-1);
             quickSort(arr, pivotIndex+1, hi);
+        }
+    }
+
+    public static void quickSort(Integer[] arr, int lo, int hi){
+        if(lo < hi){
+            int pivotIndex = partition(arr, lo, hi);
+            quickSort(arr, lo, pivotIndex-1);
+            quickSort(arr, pivotIndex+1, hi);
+        }
+    }
+
+    public static void quickSort(List<Integer> list, int lo, int hi){
+        Integer[] arr = list.toArray(new Integer[list.size()]); 
+        quickSort(arr, lo, hi);
+        list.clear(); 
+        for(Integer n : arr)
+            list.add(n);
+    }
+
+    public static void swapStr(String[] arr, int i, int j){
+        String tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
+    }
+
+    public static int partition(String[] arr, int lo, int hi){
+        int big = lo;
+        if(arr != null && lo < hi){
+            String pivot = arr[hi];
+            for(int i=lo; i<=hi; i++){
+                int n = arr[i].compareTo(pivot);
+                Print.pbl("n=" + n);
+                if(n > 0){
+                    swapStr(arr, big, i);
+                    if(i < hi)
+                        big++;
+                }
+            }
+        }
+        return big;
+    }
+
+    public static void quickSortStr(String[] arr, int lo, int hi){
+        if(lo < hi){
+            int pivotIndex = partition(arr, lo, hi);
+            quickSortStr(arr, lo, pivotIndex-1);
+            quickSortStr(arr, pivotIndex+1, hi);
         }
     }
 

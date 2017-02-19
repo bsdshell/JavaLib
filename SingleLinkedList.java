@@ -49,6 +49,11 @@ public class SingleLinkedList {
             curr.next = new Node(n);
         }
     }
+
+    public void add(int n) {
+        append(n);
+    }
+
     public void append(Node no) {
         Node curr = head;
         if(head == null)
@@ -60,6 +65,10 @@ public class SingleLinkedList {
             curr.next = no;
         }
     }
+    public void add(Node no) {
+        append(no);
+    }
+
     // prev =  null
     // [
     static Node reverseLL(Node curr){
@@ -119,28 +128,61 @@ public class SingleLinkedList {
         return curr;
     }
 
-    public void Remove(Node no) {
-        if(no != null && head != null) {
-            Node curr = head;
-            Node prev = null;
-            while(curr != no) {
-                prev = curr;
-                curr = curr.next;
+    public void remove(Node no) {
+        Node curr = head;
+        Node prev = null;
+        while(curr != null){
+            if(curr == no){
+                if(prev == null){ // first node
+                    head = curr.next;
+                    curr.next = null;
+                }else{
+                    prev.next = curr.next;
+                    curr.next = null;
+                }
+                break;
             }
-            if(prev != null && no.next != null) {
-                prev.next = no.next;
-                no.next = null;
-            } else if(prev == null && no.next != null) {
-                head = no.next;
-                no.next = null;
-            } else if(prev != null && no.next == null) {
-                prev.next = null;
-            } else {
-                no = null;
-                head = null;
-            }
+            prev = curr;
+            curr = curr.next;
         }
     }
+
+    public void delete(Node no) {
+        remove(no);
+    }
+
+    public List<Node> toList() {
+        Node curr = head;
+        List<Node> list = new ArrayList<Node>(); 
+        while(curr != null){
+            list.add(new Node(curr.data));
+            curr = curr.next;
+        }
+        return list;
+    }
+
+//    public void Remove(Node no) {
+//        if(no != null && head != null) {
+//            Node curr = head;
+//            Node prev = null;
+//            while(curr != no) {
+//                prev = curr;
+//                curr = curr.next;
+//            }
+//            if(prev != null && no.next != null) {
+//                prev.next = no.next;
+//                no.next = null;
+//            } else if(prev == null && no.next != null) {
+//                head = no.next;
+//                no.next = null;
+//            } else if(prev != null && no.next == null) {
+//                prev.next = null;
+//            } else {
+//                no = null;
+//                head = null;
+//            }
+//        }
+//    }
 }
 
 
